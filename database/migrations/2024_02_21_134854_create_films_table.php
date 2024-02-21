@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('films', function (Blueprint $table) {
             $table->id();
-          
             $table->string('title');
             $table->string('genre');
             $table->string('acteur');
             $table->string('date');
+            $table->integer('rating');
             $table->timestamps();
         });
+
     }
 
     /**

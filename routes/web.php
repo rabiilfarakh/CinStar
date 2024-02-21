@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\filmController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
@@ -26,7 +27,7 @@ Route::middleware(['auth' , 'admin'])->group(function() {
 
 
 
-
+Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
 
 
 Route::middleware('auth')->group(function () {
