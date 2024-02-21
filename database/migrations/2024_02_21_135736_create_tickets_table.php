@@ -19,6 +19,9 @@ return new class extends Migration
             $table->enum('type', ['simple', 'vip'])->default('simple');
             $table->timestamps();
         });
+        Schema::table('images', function (Blueprint $table) {
+            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
+        });
     }
 
     /**

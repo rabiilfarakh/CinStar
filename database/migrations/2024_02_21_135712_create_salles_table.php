@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('shema');
             $table->timestamps();
         });
+        Schema::table('films', function (Blueprint $table) {
+            $table->foreignId('salle_id')->constrained('salles')->onDelete('cascade');
+        });
     }
 
     /**

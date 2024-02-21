@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('films', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('salle_id')->constrained('salles')->onDelete('cascade');
+          
             $table->string('title');
             $table->string('genre');
             $table->string('acteur');
