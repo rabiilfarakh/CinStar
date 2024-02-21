@@ -28,7 +28,7 @@
                             <div class="text-lg text-gray-800">{{ $film->genre }}</div>
                         </div>
                         <p class=" text-gray-400 max-h-40 overflow-y-hidden">{{ $film->acteur }}</p>
-                         <button class="bg-red-500 text-white py-2 px-4 rounded-full">Réserver</button>
+                        <button class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full custom-button">Réserver</button>
                     </div>
                 </div>
             </div>
