@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
