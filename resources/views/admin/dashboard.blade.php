@@ -212,6 +212,8 @@
                     @endforeach
                 </select>
             </div>
+            <input type="number" class="block text-gray-700 text-sm font-bold mb-2" name="rating" min="1" max="5" placeholder="Rating (1-5)">
+
             <div class="mb-4">
                 <label for="images" class="block text-gray-700 text-sm font-bold mb-2">Images:</label>
                 <input type="file" id="images" name="images[]" accept="image/*" multiple required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">

@@ -33,9 +33,15 @@
             
         </nav>
 
-        <a class="block text-gray-200 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 hover:text-white mt-auto" href="">
-            <i class="fas fa-sign-out-alt mr-2"></i>log out
-        </a>
+        <form method="POST" class="block text-gray-200 py-2.5 px-4 my-2 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 hover:text-white mt-auto" action="{{ route('logout') }}">
+            @csrf
+            <i class="fas fa-sign-out-alt mr-2"></i>
+            <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                {{ __('Log Out') }}
+            </x-dropdown-link>
+        </form>
 
         <div class="bg-gradient-to-r from-red-300 to-red-500 h-px mt-2"></div>
 
@@ -43,3 +49,5 @@
 
     </div>
 
+   
+    
