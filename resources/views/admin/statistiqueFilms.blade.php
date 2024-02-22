@@ -53,7 +53,11 @@
                             </button>
                             <ul class="dropdown-menu absolute hidden text-gray-700 z-50 pt-1" id="modalActions{{ $film->id }}">
                                 <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Edit</a></li>
-                                <li><a  class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Delete</a></li>
+                                <li><form action="{{ route('film.delete', ['id' => $film->id]) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">Delete</button>
+                                </form></li>
                             </ul>
                         </div>
                     </td>

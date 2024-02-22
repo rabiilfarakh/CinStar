@@ -51,9 +51,18 @@ class AdminController extends Controller
 }
 public function statistiqueFilms()
 {
-    $films = Film::with('images')->get();
+    $films = Film::whereHas('images')->where('statut', 1)->with('images')->get();
     return view('admin.statistiqueFilms', ['films' => $films]);
 }
+public function deleteFilm($id)
+{
+    $film = Film::findOrFail($id);
+    $film->statut = 0;
+    $film->save();
+
+    return redirect()->back()->with('success', 'Film deleted successfully');
+}
+
 
 
 

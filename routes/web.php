@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
 Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation']);
 Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
+Route::put('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
 
 
 require __DIR__.'/auth.php';
