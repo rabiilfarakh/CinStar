@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/register/register.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Login</title>
+    <title>CineStar | Register</title>
 </head>
 <body>
 
@@ -80,10 +80,18 @@
                 <span>Continue with Google</span>
             </a>
             @endif
+
+            @if(Route::has('facebook-auth'))
+            <a class="facebook" href="{{ route ('facebook-auth')}}">
+            <ion-icon name="logo-facebook"></ion-icon>
+                <span>Continue with Facebook</span>
+            </a>
+            @endif
     </form>
 
 
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
 
