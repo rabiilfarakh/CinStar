@@ -44,6 +44,9 @@ class AdminController extends Controller
         }
     }
 
-    return redirect()->route('dashboard')->with('success', 'Film added successfully');
+    return redirect()->route('dashboard');
 }
+
+
+
 }
