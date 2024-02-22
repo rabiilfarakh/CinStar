@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
         Schema::create('films', function (Blueprint $table) {
             $table->id();
+            $table->enum('statut', ['1', '0'])->default('1');
             $table->string('title');
             $table->string('genre');
             $table->string('acteur');
