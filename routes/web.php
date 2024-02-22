@@ -1,15 +1,13 @@
 <?php
 
-<<<<<<< HEAD
-use App\Http\Controllers\filmController;
-=======
 use App\Http\Controllers\GoogleAuthController;
->>>>>>> 5a359d46316293c67f35cfa69babda09a14dde4d
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use Laravel\Socialite\Facades\Socialite;
-
+use App\Http\Controllers\filmController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\reservationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +34,8 @@ Route::middleware(['auth' , 'admin'])->group(function() {
 
 
 Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
+Route::get('/dashboard' , [AdminController::class , 'showDashboard'])->name('dashboard.show');
+Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation']);
 
 
 Route::middleware('auth')->group(function () {
