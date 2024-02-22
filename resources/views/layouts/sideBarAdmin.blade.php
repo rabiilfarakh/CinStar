@@ -11,7 +11,7 @@
 </div>
 
 <div class="flex-1 flex flex-wrap">
-    <div class="p-2 bg-black w-full md:w-64 flex flex-col md:flex hidden" id="sideNav">
+    <div class="p-2 bg-[#111111] w-full md:w-64 flex flex-col md:flex hidden" id="sideNav">
         <nav>
             <a class="block text-gray-200 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r hover:from-red-500 hover:to-red-800 hover:text-white" href="/dashboard">
                 <i class="fas fa-home mr-2"></i>room statistics

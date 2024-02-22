@@ -20,6 +20,7 @@ use App\Http\Controllers\GoogleAuthController;
 
 Route::get('auth/google' , [GoogleAuthController::class , 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back' , [GoogleAuthController::class, 'callbackGoogle']);
+Route::get('index/film/{id}' , [filmController::class, 'showFilm']);
 
 Route::middleware(['auth' , 'member'])->group(function () {
     Route::get('/' , [PagesController::class , 'index'])->name('member.index');
