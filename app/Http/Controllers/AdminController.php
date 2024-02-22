@@ -22,6 +22,7 @@ class AdminController extends Controller
         'acteur' => 'required|string',
         'date' => 'required|date',
         'salle_id' => 'required|exists:salles,id',
+        'rating' => 'nullable|integer|min:1|max:5', 
         'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
     ]);
 
@@ -31,6 +32,7 @@ class AdminController extends Controller
         'acteur' => $request->acteur,
         'date' => $request->date,
         'salle_id' => $request->salle_id,
+        'rating' => $request->rating, 
     ]);
 
     if ($request->hasFile('images')) {
