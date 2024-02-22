@@ -33,9 +33,8 @@ Route::middleware(['auth' , 'admin'])->group(function() {
     Route::get('/insertFilms', function () {
         return view('admin.insertFilms');
     });
-    Route::get('/manageResev', function () {
-        return view('admin.manageResev');
-    });
+    Route::get('/manageResev/{id}',[AdminController::class , 'manageDash'])->name('manage');
+    
     Route::get('/manageShemas', function () {
         return view('admin.manageShemas');
     });

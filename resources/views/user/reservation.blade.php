@@ -8,30 +8,28 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>Document</title>
     <style>
-        /* Styles CSS en ligne pour l'image */
+
         .full-height {
-            height: 100vh; /* La hauteur de l'image prendra 100% de la hauteur de la vue */
-            object-fit: cover; /* Pour que l'image remplisse complètement le conteneur */
-            position: relative; /* Position relative pour permettre le positionnement absolu */
+            height: 100vh;
+            object-fit: cover; 
+            position: relative; 
         }
 
-        /* Superposition de couleur blanche */
         .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%; /* Hauteur de l'overlay, ajustez-la selon vos besoins */
-            background-color: rgba(10, 10, 10, 0.271); /* Couleur blanche avec une opacité de 80% */
+            height: 100%; 
+            background-color: rgba(10, 10, 10, 0.271); 
         }
     </style>
 </head>
 <body class="bg-black flex justify-between">
 
-    <div class="w-1/4 relative"> <!-- Ajout de position relative pour que l'overlay soit relatif à cette div -->
-        @foreach($images as $image)
-            <img src="{{ asset('img/' . $image->image . '.jpg') }}" class="full-height"> <!-- Ajout de la classe full-height à l'image -->
-            <div class="overlay"></div> <!-- Ajout de la div pour l'overlay -->
+    <div class="w-1/4 relative">
+            <img src="{{ asset('img/' . $image->image . '.jpg') }}" class="full-height">
+            <div class="overlay"></div> 
         @endforeach
     </div>
 
