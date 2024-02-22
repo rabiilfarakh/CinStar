@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\filmController;
 use App\Http\Controllers\reservationController;
-
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
