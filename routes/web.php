@@ -29,9 +29,10 @@ Route::middleware(['auth' , 'member'])->group(function () {
 });
 
 Route::middleware(['auth' , 'admin'])->group(function() {
-    Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
-    Route::get('/insertFilms', function () {
-        return view('admin.insertFilms');
+    // Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
+    Route::get('/insertFilms' , [AdminController::class , 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
     });
     Route::get('/manageResev', function () {
         return view('admin.manageResev');
@@ -56,6 +57,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
 Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation']);
+Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
 
 
 require __DIR__.'/auth.php';

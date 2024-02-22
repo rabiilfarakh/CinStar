@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function dashboard()
     {
         $salles = Salle::all();
-        return view('admin.dashboard', compact('salles'));
+        return view('admin.insertFilms', ['salles' => $salles]);
     }
 
     public function storeFilm(Request $request)
@@ -47,7 +47,12 @@ class AdminController extends Controller
         }
     }
 
-    return redirect()->route('dashboard');
+    return redirect('/dashboard');
+}
+public function statistiqueFilms()
+{
+    $films = Film::with('images')->get();
+    return view('admin.statistiqueFilms', ['films' => $films]);
 }
 
 
