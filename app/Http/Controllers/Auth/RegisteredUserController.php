@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Session;
 
 class RegisteredUserController extends Controller
 {
@@ -41,9 +42,13 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'phonenumber' =>$request->Phone,
             'password' => Hash::make($request->password),
-            'role' =>$request->role,
         ]);
 
-        return redirect()->route('login');
+
+
+        Session::put('user_role', $user->id);
+
+
+        return redirect()->route('role');
     }
 }

@@ -1,9 +1,14 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\filmController;
+=======
+use App\Http\Controllers\GoogleAuthController;
+>>>>>>> 5a359d46316293c67f35cfa69babda09a14dde4d
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +20,9 @@ use App\Http\Controllers\PagesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('auth/google' , [GoogleAuthController::class , 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back' , [GoogleAuthController::class, 'callbackGoogle']);
 
 Route::middleware(['auth' , 'member'])->group(function () {
     Route::get('/' , [PagesController::class , 'index'])->name('member.index');

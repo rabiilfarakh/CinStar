@@ -10,6 +10,8 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RoleController;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -19,6 +21,10 @@ Route::middleware('guest')->group(function () {
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
+
+    Route::get('/role' , [RoleController::class , 'index'])->name('role');
+    Route::post('/role/select' , [RoleController::class , 'role'])->name('role.selector');
+
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
@@ -36,6 +42,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+    
     Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
