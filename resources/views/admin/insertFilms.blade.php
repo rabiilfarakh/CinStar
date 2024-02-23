@@ -58,7 +58,7 @@
                 
             </div>
             <div class="flex items-center justify-between">
-                <button type="submit" class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Film</button>
+                <button type="submit" onclick="" class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Film</button>
             </div>
             </form>
         </div>

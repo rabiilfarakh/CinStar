@@ -47,7 +47,7 @@ class AdminController extends Controller
         }
     }
 
-    return redirect('/dashboard');
+    return redirect()->back();
 }
 public function statistiqueFilms()
 {
@@ -60,7 +60,7 @@ public function deleteFilm($id)
     $film->statut = 0;
     $film->save();
 
-    return redirect()->back()->with('success', 'Film deleted successfully');
+    return redirect()->back();
 }
 
 

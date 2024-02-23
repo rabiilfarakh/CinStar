@@ -27,7 +27,7 @@
                 <i class="far fa-calendar-alt mr-2"></i>reservation management
             </a>
             <a class="block text-gray-200 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 hover:text-white" href="/manageShemas">
-                <i class="fas fa-project-diagram mr-2"></i>shema management
+                <i class="fas fa-project-diagram mr-2"></i>schema management
 
             </a>
             

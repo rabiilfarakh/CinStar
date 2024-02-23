@@ -16,7 +16,7 @@
 
     <div class="mt-8 absolute right-8 w-[75%] bg-white p-4 shadow rounded-lg">
         <div class="my-1"></div>
-        <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
+        <div class="bg-gradient-to-r from-red-300 to-red-500 h-px mb-6"></div> 
         <table class="w-full table-auto text-center text-sm">
             <thead>
                 <tr class="text-sm leading-normal">
@@ -52,7 +52,7 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                             <ul class="dropdown-menu absolute hidden text-gray-700 z-50 pt-1" id="modalActions{{ $film->id }}">
-                                <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" href="#">Edit</a></li>
+                                <li><a class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" onclick="toggleModal('FormModal')" href="#">Edit</a></li>
                                 <li><form action="{{ route('film.delete', ['id' => $film->id]) }}" method="POST">
                                     @csrf
                                     @method('PUT')
@@ -68,7 +68,50 @@
         </table>
     </div>
 </div>
-
+<div class="container mx-auto hidden fixed bg-white/45 left-0 right-0 top-0 bottom-0 p-4" id="FormModal" onclick="toggleModal('FormModal')">
+    <form action="#" method="POST" enctype="multipart/form-data" class="max-w-[50%]   mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="grid grid-cols-2 gap-4">
+        <div class="mb-4">
+            <label for="title" class="block text-gray-700 text-sm font-bold mb-2">Title:</label>
+            <input type="text" id="title" name="title" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="genre" class="block text-gray-700 text-sm font-bold mb-2">Genre:</label>
+            <input type="text" id="genre" name="genre" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="acteur" class="block text-gray-700 text-sm font-bold mb-2">Acteur:</label>
+            <input type="text" id="acteur" name="acteur" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="date" class="block text-gray-700 text-sm font-bold mb-2">Date:</label>
+            <input type="date" id="date" name="date" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="salle_id" class="block text-gray-700 text-sm font-bold mb-2">Salle Name:</label>
+            <select name="" id="salle_id" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value=""></option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="images" class="block text-gray-700 text-sm font-bold mb-2">Images:</label>
+            <input type="file" id="images" name="images[]" accept="image/*" multiple required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+        <div class="mb-4">
+            <label for="rating" class="block text-gray-700 text-sm font-bold mb-2">Rating:</label>
+            <input type="number" id="rating" name="rating" min="0" max="5" step="0.1" required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+      
+        
+    </div>
+    <div class="flex items-center justify-between">
+        <button type="submit" class="bg-red-700 hover:bg-red-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Confirm</button>
+    </div>
+    </form>
+</div>
+    </div>
+</div>
+</div>
 <script>
   function toggleModal(modalId){
     const modal = document.getElementById(modalId);
