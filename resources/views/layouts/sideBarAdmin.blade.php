@@ -26,11 +26,21 @@
             <a class="block text-gray-200 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-500 hover:to-red-800 hover:text-white" href="/manageResev">
                 <i class="far fa-calendar-alt mr-2"></i>reservation management
             </a>
-            <a class="block text-gray-200 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 hover:text-white" href="/manageShemas">
-                <i class="fas fa-project-diagram mr-2"></i>schema management
 
+            <a onclick="showSubMenu()" onclick="hideSubMenu()" class="cursor-pointer block text-gray-200 py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 hover:text-white">
+                <i class="fas fa-exchange-alt mr-2"></i>schema management
             </a>
-            
+            <!-- Contenu du sous-menu-->
+            <div id="subMenu" class="absolute hidden  text-gray-700 py-2 px-4 rounded shadow-md">
+                @foreach($salles as $salle)
+                    <form method="get" action="{{ route('manage',['id'=>$salle->id]) }}"> 
+                        @csrf
+                        <button class="block text-white py-2.5 px-4 my-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-500 hover:to-red-800 hover:text-white">
+                            {{$salle->name}}
+                        </button>
+                    </form>
+                @endforeach
+            </div>
         </nav>
 
         <form method="POST" class="flex justify-center text-gray-200  px-4 rounded transition duration-200 hover:bg-gradient-to-r  hover:from-red-700 hover:to-red-800 mt-auto" action="{{ route('logout') }}">
@@ -48,6 +58,17 @@
         <p class="mb-1 px-5 py-3 text-left text-xs text-red-500">Copyright WCSLAT@2023</p>
 
     </div>
+
+
+    <script>
+        function showSubMenu() {
+            document.getElementById('subMenu').classList.remove('hidden');
+        }
+    
+        function hideSubMenu() {
+            document.getElementById('subMenu').classList.add('hidden');
+        }
+    </script>
 
    
     

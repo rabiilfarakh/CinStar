@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Film;
-use App\Models\films;
-use App\Models\images;
-use Nette\Utils\Image;
 use Illuminate\Http\Request;
+use App\Models\Film;
+use App\Models\Image;
 
 class filmController extends Controller
 {

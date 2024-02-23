@@ -12,8 +12,19 @@ class AdminController extends Controller
     public function dashboard()
     {
         $salles = Salle::all();
-        return view('admin.insertFilms', ['salles' => $salles]);
+        $film = Film::all();
+  
+        return view('admin.dashboard', compact('salles', 'film'));
     }
+
+    public function manageDash($id){
+        $salles = Salle::all();
+        $salle = Salle::findOrFail($id);
+        $films = Film::where("salle_id", $id)->get();
+    
+        return view('admin.manageShemas', compact('salles','salle', 'films'));
+    }
+    
 
     public function storeFilm(Request $request)
 {
