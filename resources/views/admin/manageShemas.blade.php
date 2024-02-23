@@ -10,6 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+    
 <div class="flex flex-col h-screen bg-[#333333] ">
 
     @include('layouts.sideBarAdmin')
@@ -17,7 +18,7 @@
   <form method="POST" action="">
     @csrf
     <div class="flex flex-col justify-center items-center">
-        <div class="text-white text-4xl mb-4">Cocher le style de la salle</div> 
+        <div class="text-white text-4xl mb-4">Cocher le style de la {{$salle->name}}</div> 
         <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
             <div class="">
                 @for($i = 0; $i < 105; $i++)
@@ -33,7 +34,7 @@
 
 <script>
     var checkboxes = document.querySelectorAll('.checkbox');
-    var maxChecked = 4;
+    var maxChecked = 5;
 
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
@@ -55,9 +56,7 @@
         });
     });
 </script>
-
-    
-     
+ 
 </div>
 </body>
 </html>
