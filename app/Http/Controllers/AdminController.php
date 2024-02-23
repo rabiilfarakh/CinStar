@@ -16,12 +16,7 @@ class AdminController extends Controller
         return view('admin.dashboard', ['salles' => $salles]);
     }
 
-    public function insertFilm(){
-        $salles = Salle::all();
-        $film = Film::all();
-  
-        return view('admin.dashboard', compact('salles', 'film'));
-    }
+
 
     public function insertFilm(){
         $salles = Salle::all();
