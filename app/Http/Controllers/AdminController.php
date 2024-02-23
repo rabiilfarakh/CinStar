@@ -17,6 +17,12 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('salles', 'film'));
     }
 
+    public function insertFilm(){
+        $salles = Salle::all();
+        $film = Film::all();
+        return view('admin.insertFilms', compact('salles', 'film'));
+    }
+
     public function manageDash($id){
         $salles = Salle::all();
         $salle = Salle::findOrFail($id);
@@ -62,8 +68,9 @@ class AdminController extends Controller
 }
 public function statistiqueFilms()
 {
+    $salles = Salle::all();
     $films = Film::whereHas('images')->where('statut', 1)->with('images')->get();
-    return view('admin.statistiqueFilms', ['films' => $films]);
+    return view('admin.statistiqueFilms', compact('films', 'salles'));
 }
 public function deleteFilm($id)
 {
