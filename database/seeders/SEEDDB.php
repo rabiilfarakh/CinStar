@@ -1,16 +1,20 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\Film;
+use App\Models\Image;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Image; 
-use App\Models\Film;
-use Carbon\Carbon; 
 
-class filmSeeder extends Seeder
+class SEEDDB extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
-
  $movies = [
    [
          "Title" => "Avatar", 
@@ -495,8 +499,9 @@ class filmSeeder extends Seeder
                 'Awards' => $movieData['Awards'],
                 'genre' => $movieData['Genre'],
                 'acteur' => $movieData['Actors'],
-                'poster' => $movieData['Poster'],
-                'date' => Carbon::now(), 
+                'Poster' => $movieData['Poster'],
+                'date' => Carbon::now(),
+                'plot' => $movieData['Plot'],
             ]);
 
             $movieId = $movie->id;

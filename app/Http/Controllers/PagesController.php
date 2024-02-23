@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Film;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class PagesController extends Controller
 {
@@ -11,7 +13,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $films = Film::with('images')->get();
+        return view('user.index' , ['films' => $films]);
     }
 
 

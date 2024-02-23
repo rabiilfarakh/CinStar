@@ -20,8 +20,9 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::table('films', function (Blueprint $table) {
-            $table->foreignId('salle_id')->constrained('salles')->onDelete('cascade');
+            $table->foreignId('salle_id')->nullable()->constrained('salles')->onDelete('cascade');
         });
+        
     }
 
     /**

@@ -16,10 +16,16 @@ return new class extends Migration
             $table->id();
             $table->enum('statut', ['1', '0'])->default('1');
             $table->string('title');
+            $table->string('year');
+            $table->string('runtime');
+            $table->string('released');
+            $table->string('Awards');
             $table->string('genre');
             $table->string('acteur');
             $table->string('date');
-            $table->integer('rating');
+            $table->text('Poster');
+            $table->text('plot');
+            $table->decimal('rating', 5, 2)->change();
             $table->timestamps();
         });
 

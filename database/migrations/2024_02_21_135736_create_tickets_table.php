@@ -20,7 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::table('images', function (Blueprint $table) {
-            $table->foreignId('ticket_id')->constrained('tickets')->onDelete('cascade');
+            $table->foreignId('ticket_id')->nullable()->constrained('tickets')->onDelete('cascade');
         });
     }
 

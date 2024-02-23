@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+@font-face {
+    font-family: Dx Slight;
+    src: url(../font/dxslight-mediumultra-free-personal-use.otf);
+}
+
+@font-face {
+    font-family: against;
+    src: url(../font/against\ regular.otf);
+}
+
+@font-face {
+    font-family: Brigends;
+    src: url(../font/brigends-expanded-font-1705392758-0/brigendsexpanded-nrek1.otf);
+}
+
+@font-face {
+    font-family: MADE TOMMY;
+    src: url(../font/MADE\ TOMMY\ Light_PERSONAL\ USE.otf);
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: rgb(52, 46, 55);
+    --darkv2: #14141B;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+    --sidebar : rgb(16, 15, 51);
+}
+
+
+body {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#page1 {
+    height: 100vh;
+}
+#page2{
+    padding: 1rem;
+    height: 100vh;
+}
