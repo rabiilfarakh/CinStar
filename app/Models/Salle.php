@@ -12,9 +12,16 @@ class Salle extends Model
         'taille',
         'shema',
     ];
+
     use HasFactory;
+
     public function films()
     {
         return $this->hasMany(Film::class);
+    }
+
+    public function chaises()
+    {
+        return $this->hasMany(Chaises::class);
     }
 }

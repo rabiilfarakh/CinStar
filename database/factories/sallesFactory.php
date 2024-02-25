@@ -3,13 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use  App\Models\salles;
+use  App\Models\Salle;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\salles>
  */
 class sallesFactory extends Factory
 {
-    protected $model = salles::class;
+    protected $model = Salle::class;
 
     public function definition(): array
     {

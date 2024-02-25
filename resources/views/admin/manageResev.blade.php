@@ -12,7 +12,7 @@
 <body>
 <div class="flex flex-col h-screen bg-gray-100">
 
-    @include('layouts.sideBarAdmin')
+
 
     
 </div>

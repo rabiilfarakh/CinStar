@@ -28,6 +28,7 @@
 <body class="bg-black flex justify-between">
 
     <div class="w-1/4 relative">
+        @foreach($images as $image)
             <img src="{{ asset('img/' . $image->image . '.jpg') }}" class="full-height">
             <div class="overlay"></div> 
         @endforeach
@@ -37,11 +38,15 @@
         <div class="text-white text-4xl mb-4">Sélectionnez vos places</div> 
         <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
             <div class="">
-                @for($i = 0; $i < $tailleSalle; $i++)
+                @for($i = 0; $i < $salle->taille; $i++)
                     @if($i % 10 == 0 && $i != 0)
                         </div><div class="mt-2">
                     @endif
-                    <i class="fas fa-couch text-gray-500 hover:text-green-500 text-2xl"></i>
+                    @if($salle->chaises->contains('number', $i))
+                        <i class="fas fa-couch text-gray-500 hover:text-green-500 text-2xl"></i>
+                    @else
+                        <i class="fas fa-couch text-gray-500 hover:text-red-500 text-2xl"></i>
+                    @endif
                 @endfor
             </div>
         </div>

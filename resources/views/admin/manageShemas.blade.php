@@ -15,26 +15,31 @@
 
     @include('layouts.sideBarAdmin')
 
-  <form method="POST" action="">
-    @csrf
-    <div class="flex flex-col justify-center items-center">
-        <div class="text-white text-4xl mb-4">Cocher le style de la {{$salle->name}}</div> 
-        <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
-            <div class="">
-                @for($i = 0; $i < 105; $i++)
-                    @if($i % 15 == 0 && $i != 0)
-                        </div><div class="mt-2">
-                    @endif
-                    <input type="checkbox" class="h-6 w-6 checkbox">
-                @endfor
+    <form id="styleForm" method="POST" action="{{ route('insertSchema',['id' => $salle->id]) }}">
+        @csrf
+        <div class="flex flex-col justify-center items-center ml-2">
+            <div class="text-white text-4xl mb-4">Cocher le style de la {{ $salle->name }}</div>
+            <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
+                <div class="">
+                    @for($i = 0; $i < $salle->taille; $i++)
+                        @if($i % 10 == 0 && $i != 0)
+                            </div><div class="mt-2">
+                        @endif
+                        <input type="checkbox" value="{{$i+1}}" name="chaises[]" class="h-6 w-6 checkbox">
+                        <input type="hidden" name="salle_id" value="{{ $salle->id }}">
+                    @endfor
+                </div>
             </div>
         </div>
-    </div>
-</form>
+        <button id="submitButton" class="ml-16 mt-5 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+            Submit
+        </button>
+    </form>
+    
 
 <script>
     var checkboxes = document.querySelectorAll('.checkbox');
-    var maxChecked = 5;
+    var maxChecked = 4;
 
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {

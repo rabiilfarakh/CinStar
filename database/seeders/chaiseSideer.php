@@ -4,15 +4,15 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Salle;
+use App\Models\chaises;
 
-class salleSeeder extends Seeder
+class chaiseSideer extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Salle::factory()->count(10)->create();
+        chaises::factory()->count(53)->create();
     }
 }

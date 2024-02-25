@@ -3,14 +3,14 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use  App\Models\films;
+use  App\Models\Film;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\films>
  */
 class filmsFactory extends Factory
 {
-    protected $model = films::class;
+    protected $model = Film::class;
     public function definition(): array
     {
         return [

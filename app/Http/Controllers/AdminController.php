@@ -6,8 +6,37 @@ use App\Models\Film;
 use App\Models\Salle;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use App\Models\chaises;
 class AdminController extends Controller
 {
+    public function insertSchema(Request $request){
+        
+        $request->validate([
+            'salle_id' => 'required|exists:salles,id',
+            'chaises' => 'required|array',
+        ]);
+
+        $chaises = $request->input('chaises');
+
+        Chaises::where('salle_id', $request->salle_id)
+              ->whereIn('number', $chaises)
+              ->update(['display' => 'block']);
+
+        Chaises::where('salle_id', $request->salle_id)
+              ->whereNotIn('number', $chaises)
+              ->update(['display' => 'none']);
+
+            return redirect()->back();
+    }
+    
+
+    public function schemaSalle(Request $request){
+        
+        $salles = Salle::all();
+        $film = Film::all();
+        $styleSalle = $request->input('style', []);
+        dd($styleSalle);
+    }
 
     public function dashboard()
     {

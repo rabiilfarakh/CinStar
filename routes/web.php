@@ -31,10 +31,9 @@ Route::middleware(['auth' , 'member'])->group(function () {
 Route::middleware(['auth' , 'admin'])->group(function() {
     Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
     Route::get('/insertFilms' , [AdminController::class , 'insertFilm'])->name('dashboard');
-    // Route::get('/dashboard', function () {
-    //     return view('admin.dashboard');
-    // });
     Route::get('/manageResev/{id}',[AdminController::class , 'manageDash'])->name('manage');
+    Route::post('/manageResev/{id}',[AdminController::class , 'schemaSalle'])->name('schema');
+    Route::post('/manageResev/{id}',[AdminController::class , 'insertSchema'])->name('insertSchema');
     
     Route::get('/manageShemas', function () {
         return view('admin.manageShemas');
