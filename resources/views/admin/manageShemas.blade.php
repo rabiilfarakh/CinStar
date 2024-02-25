@@ -39,7 +39,7 @@
 
 <script>
     var checkboxes = document.querySelectorAll('.checkbox');
-    var maxChecked = 4;
+    var maxChecked = $salle->taille;
 
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {

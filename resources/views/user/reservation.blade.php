@@ -33,7 +33,6 @@
             <div class="overlay"></div> 
         @endforeach
     </div>
-
     <div class="flex flex-col justify-center items-center w-3/4"> 
         <div class="text-white text-4xl mb-4">Sélectionnez vos places</div> 
         <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
@@ -42,14 +41,19 @@
                     @if($i % 10 == 0 && $i != 0)
                         </div><div class="mt-2">
                     @endif
-                    @if($salle->chaises->contains('number', $i))
+                    @php
+                        $display = $salle->chaises->where('number', $i+1)->first()->display ?? 'none';
+                    @endphp
+                    @if($display == 'block')
                         <i class="fas fa-couch text-gray-500 hover:text-green-500 text-2xl"></i>
                     @else
-                        <i class="fas fa-couch text-gray-500 hover:text-red-500 text-2xl"></i>
+                        <i class="fas fa-couch text-gray-500 text-opacity-50 cursor-default text-2xl"></i>
                     @endif
                 @endfor
             </div>
         </div>
     </div>
+    
+    
 </body>
 </html>
