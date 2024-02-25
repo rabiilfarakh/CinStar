@@ -77,7 +77,7 @@
                                                 method="POST">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit"
+                                                <button type="submit"  onclick="return confirm('Are you sure you want to delete {{ $film->title }}?')"
                                                     class="bg-gray-400 hover:bg-gray-600 py-2 px-4 block whitespace-no-wrap">Delete</button>
                                             </form>
                                         </li>
