@@ -77,11 +77,16 @@ class AdminController extends Controller
 }
 
 
-public function statistiqueFilms()
+public function statistiqueFilms(Request $request)
 {
     $salles = Salle::all();
     $films = Film::whereHas('images')->where('statut', 1)->with('images')->get();
-    return view('admin.statistiqueFilms', compact('films', 'salles'));
+    $filmEdit = Film::where('id' ,$request->input('film_id') )->where('statut', 1)->with('images')->first();
+    return view('admin.statistiqueFilms', [
+        'salles' => $salles,
+        'films' => $films,
+        'filmEdit' => $filmEdit,
+    ]);
 }
 public function deleteFilm($id)
 {
@@ -90,6 +95,43 @@ public function deleteFilm($id)
     $film->save();
 
     return redirect()->back();
+}
+
+public function updateMovie(Request $request)
+{
+    $filmId = $request->input('film_id');
+    $film = Film::find($filmId);
+
+    $film->title = $request->input('title');
+    $film->genre = $request->input('genre');
+    $film->acteur = $request->input('acteur');
+    $film->date = $request->input('date');
+    $film->salle_id = $request->input('salle_id');
+    $film->rating = $request->input('rating');
+    $film->length = $request->input('length');
+    $film->presentation_time = $request->input('presentation_time');
+    $film->description = $request->input('description');
+
+    $film->save();
+
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('images', 'public');
+
+            $existingImage = $film->images()->first();
+
+            if ($existingImage) {
+                $existingImage->update(['image' => $imagePath]);
+            } else {
+                Image::create([
+                    'film_id' => $film->id,
+                    'image' => $imagePath,
+                ]);
+            }
+        }
+    }
+
+    return redirect('/statistiqueFilms')->with('success', 'Film updated successfully');
 }
 
 

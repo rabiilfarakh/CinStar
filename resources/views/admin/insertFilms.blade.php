@@ -36,12 +36,12 @@
                         class="bg-gray-800 appearance-none rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="genre" class="block text-sm font-bold mb-2">Genre:</label>
+                    <label for="genre" class="block text-sm font-bold mb-2">Type:</label>
                     <input type="text" id="genre" name="genre" required
                         class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="acteur" class="block text-sm font-bold mb-2">Acteur:</label>
+                    <label for="acteur" class="block text-sm font-bold mb-2">Actor:</label>
                     <input type="text" id="acteur" name="acteur" required
                         class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
@@ -71,13 +71,13 @@
                         class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="length" class="block text-sm font-bold mb-2">Length:</label>
+                    <label for="length" class="block text-sm font-bold mb-2">Movie duration:</label>
                     <input type="text" id="length" name="length" required
                         class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
                     <label for="presentation_time"
-                        class="block text-sm font-bold mb-2">Presentation Time:</label>
+                        class="block text-sm font-bold mb-2">Show Time:</label>
                     <select name="presentation_time" id="presentation_time" required
                         class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                         <option value="20h">20h</option>
