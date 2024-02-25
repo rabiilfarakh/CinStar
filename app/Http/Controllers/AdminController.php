@@ -42,6 +42,9 @@ class AdminController extends Controller
         'date' => 'required|date',
         'salle_id' => 'required|exists:salles,id',
         'rating' => 'nullable|integer|min:1|max:5', 
+        'length' => 'required|string',
+        'presentation_time' => 'required|in:20h,23h',
+        'description' => 'nullable|string',
         'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
     ]);
 
@@ -51,7 +54,10 @@ class AdminController extends Controller
         'acteur' => $request->acteur,
         'date' => $request->date,
         'salle_id' => $request->salle_id,
-        'rating' => $request->rating, 
+        'rating' => $request->rating,
+        'length' => $request->length,
+        'presentation_time' => $request->presentation_time,
+        'description' => $request->description,
     ]);
 
     if ($request->hasFile('images')) {
@@ -65,8 +71,12 @@ class AdminController extends Controller
         }
     }
 
+    session()->flash('success', 'Film added successfully!');
+
     return redirect()->back();
 }
+
+
 public function statistiqueFilms()
 {
     $salles = Salle::all();

@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('date');
             $table->integer('rating');
             $table->enum('statut', ['1', '0'])->default('1');
+            $table->string('length'); 
+            $table->enum('presentation_time', ['20h', '23h']); 
+            $table->text('description')->nullable();
             $table->timestamps();
         });
 

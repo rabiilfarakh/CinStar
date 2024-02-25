@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\salles;
+use App\Models\salle;
 
 class salleSeeder extends Seeder
 {
@@ -13,6 +13,6 @@ class salleSeeder extends Seeder
      */
     public function run(): void
     {
-        salles::factory()->count(10)->create();
+        salle::factory()->count(10)->create();
     }
 }
