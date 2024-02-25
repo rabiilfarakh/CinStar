@@ -46,6 +46,19 @@
             cursor: pointer;
         }
 
+        .confirmation-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(144, 238, 144, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
     </style>
 </head>
 <body class="bg-black flex justify-between">
@@ -66,10 +79,15 @@
                         </div><div class="mt-2">
                     @endif
                     @php
-                        $display = $salle->chaises->where('number', $i+1)->first()->display ?? 'none';
+                    $chair = $salle->chaises->where('number', $i+1)->first();
+                    $display = $chair->display ?? 'none';
                     @endphp
                     @if($display == 'block')
-                        <i data-price="10" class="fas fa-couch text-gray-500 hover:text-green-500 text-2xl cursor-pointer"></i>
+                        @if($chair->status == 'reserved')
+                            <i class="fas fa-couch text-gray-500 text-opacity-50 cursor-default text-2xl"></i>
+                        @else
+                            <i data-price="10" data-chair-id="{{ $chair->id }}" class="reservation-trigger fas fa-couch text-gray-500 hover:text-green-500 text-2xl cursor-pointer"></i>
+                        @endif
                     @else
                         <i class="fas transparent fa-couch text-white text-opacity-50 cursor-default text-2xl"></i>
                     @endif
@@ -81,31 +99,49 @@
     <div id="popup">
         <span id="popup-close">&times;</span>
         <div id="popup-content"></div>
-        <form method="post">
+        <form id="reservation-form" method="post" action="{{ route('stystemeReservation',['id' => $salle->id]) }}">
+            @csrf 
+            <input type="hidden" id="chair-id" name="chair_id">
             <button id="reservation-btn" type="submit" class="mt-5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Réserver</button>
         </form>
+    </div>
+
+    <div id="confirmation-popup" class="confirmation-popup">
+        <span id="confirmation-popup-close">&times;</span>
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-lg">
+            <p class="text-lg font-semibold">Order Status: Confirmed</p>
+            <p>Your order has been successfully confirmed and is now being processed.</p>
+        </div>
     </div>
 
 
     <script>
 
-        const chairs = document.querySelectorAll('.fa-couch');
+        const reservationTriggers = document.querySelectorAll('.reservation-trigger');
 
-        chairs.forEach(chair => {
-
-            chair.addEventListener('click', () => {
-
-                const price = chair.getAttribute('data-price');
-
+        reservationTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const price = trigger.getAttribute('data-price');
+                const chairId = trigger.getAttribute('data-chair-id');
                 const popup = document.getElementById('popup');
                 const popupContent = document.getElementById('popup-content');
                 popupContent.innerHTML = `Le prix de billet pour cette chaise est ${price} €`;
+                document.getElementById('chair-id').value = chairId; 
                 popup.style.display = 'block';
             });
         });
 
         document.getElementById('popup-close').addEventListener('click', () => {
             document.getElementById('popup').style.display = 'none';
+        });
+
+        document.getElementById('reservation-form').addEventListener('submit', () => {
+            document.getElementById('popup').style.display = 'none';
+            document.getElementById('confirmation-popup').style.display = 'block';
+        });
+
+        document.getElementById('confirmation-popup-close').addEventListener('click', () => {
+            document.getElementById('confirmation-popup').style.display = 'none';
         });
     </script>
 
