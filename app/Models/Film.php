@@ -15,6 +15,9 @@ class Film extends Model
         'date',
         'salle_id',
         'rating',
+        'length',
+        'presentation_time',
+        'description',
     ];
     use HasFactory;
 
