@@ -16,6 +16,7 @@ class Film extends Model
         'genre',
         'acteur',
         'date',
+        'salle_id',
         'rating',
         'Poster',
         'length',
