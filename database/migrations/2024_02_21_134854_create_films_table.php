@@ -24,7 +24,9 @@ return new class extends Migration
             $table->string('acteur');
             $table->string('date');
             $table->text('Poster');
+            $table->string('type');
             $table->text('plot');
+            $table->string('png');
             $table->decimal('rating', 5, 2)->change();
             $table->timestamps();
         });

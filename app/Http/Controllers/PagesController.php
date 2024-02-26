@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Film;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 
 class PagesController extends Controller
 {
@@ -14,7 +15,10 @@ class PagesController extends Controller
     public function index()
     {
         $films = Film::with('images')->get();
-        return view('user.index' , ['films' => $films]);
+
+        $series = $films->where('type' , 'like' , 'series');
+
+        return view('user.index2' , ['films' => $films , 'series' => $series]);
     }
 
 
