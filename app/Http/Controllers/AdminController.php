@@ -40,11 +40,12 @@ class AdminController extends Controller
 
     public function dashboard()
     {
+
         $salles = Salle::all();
-        $film = Film::all();
-  
-        return view('admin.dashboard', compact('salles', 'film'));
+        return view('admin.dashboard', ['salles' => $salles]);
     }
+
+
 
     public function insertFilm(){
         $salles = Salle::all();
@@ -70,6 +71,9 @@ class AdminController extends Controller
         'date' => 'required|date',
         'salle_id' => 'required|exists:salles,id',
         'rating' => 'nullable|integer|min:1|max:5', 
+        'length' => 'required|string',
+        'presentation_time' => 'required|in:20h,23h',
+        'description' => 'nullable|string',
         'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
     ]);
 
@@ -79,7 +83,10 @@ class AdminController extends Controller
         'acteur' => $request->acteur,
         'date' => $request->date,
         'salle_id' => $request->salle_id,
-        'rating' => $request->rating, 
+        'rating' => $request->rating,
+        'length' => $request->length,
+        'presentation_time' => $request->presentation_time,
+        'description' => $request->description,
     ]);
 
     if ($request->hasFile('images')) {
@@ -93,13 +100,22 @@ class AdminController extends Controller
         }
     }
 
+    session()->flash('success', 'Film added successfully!');
+
     return redirect()->back();
 }
-public function statistiqueFilms()
+
+
+public function statistiqueFilms(Request $request)
 {
     $salles = Salle::all();
     $films = Film::whereHas('images')->where('statut', 1)->with('images')->get();
-    return view('admin.statistiqueFilms', compact('films', 'salles'));
+    $filmEdit = Film::where('id' ,$request->input('film_id') )->where('statut', 1)->with('images')->first();
+    return view('admin.statistiqueFilms', [
+        'salles' => $salles,
+        'films' => $films,
+        'filmEdit' => $filmEdit,
+    ]);
 }
 public function deleteFilm($id)
 {
@@ -108,6 +124,43 @@ public function deleteFilm($id)
     $film->save();
 
     return redirect()->back();
+}
+
+public function updateMovie(Request $request)
+{
+    $filmId = $request->input('film_id');
+    $film = Film::find($filmId);
+
+    $film->title = $request->input('title');
+    $film->genre = $request->input('genre');
+    $film->acteur = $request->input('acteur');
+    $film->date = $request->input('date');
+    $film->salle_id = $request->input('salle_id');
+    $film->rating = $request->input('rating');
+    $film->length = $request->input('length');
+    $film->presentation_time = $request->input('presentation_time');
+    $film->description = $request->input('description');
+
+    $film->save();
+
+    if ($request->hasFile('images')) {
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('images', 'public');
+
+            $existingImage = $film->images()->first();
+
+            if ($existingImage) {
+                $existingImage->update(['image' => $imagePath]);
+            } else {
+                Image::create([
+                    'film_id' => $film->id,
+                    'image' => $imagePath,
+                ]);
+            }
+        }
+    }
+
+    return redirect('/statistiqueFilms')->with('success', 'Film updated successfully');
 }
 
 
