@@ -24,6 +24,7 @@
         </div>
 
         <div
+        
             class="md:w-[80%] overflow-x-auto overflow-y-scroll min-h-full w-full my-14 md bg-white p-4 shadow rounded-lg">
             <div class="my-1"></div>
             <div class="bg-gradient-to-r from-red-300 to-red-500 h-px mb-6"></div>
@@ -115,7 +116,7 @@
     <div class="container mx-auto hidden fixed bg-white/45 left-0 right-0 top-0 bottom-0  p-4" id="FormModal">
         <form action="/update" method="POST" enctype="multipart/form-data"
             class="max-w-[80%]  md:ml-40 md:mb-20 mx-auto  bg-black text-white shadow-lg rounded px-8 pt-6 mt-5 pb-8 md:mx-8 ">
-            <div class="grid grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="mb-4">
                     @csrf
                     <input type="hidden" name="film_id" value="{{ $filmEdit ? $filmEdit->id : '' }}">
