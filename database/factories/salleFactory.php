@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use  App\Models\Salle;
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\salles>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\salle>
  */
-class sallesFactory extends Factory
+class salleFactory extends Factory
 {
     protected $model = Salle::class;
 
