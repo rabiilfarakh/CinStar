@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\chaises>
  */
 class chaisesFactory extends Factory
 {
@@ -17,9 +17,7 @@ class chaisesFactory extends Factory
     public function definition(): array
     {
         return [
-            'salle_id' => 2,
-            'display' => "none",
-            'type' => "normal"
+            'salle_id' => 1,
         ];
     }
 }

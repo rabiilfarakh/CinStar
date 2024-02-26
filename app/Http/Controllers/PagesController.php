@@ -18,7 +18,9 @@ class PagesController extends Controller
 
         $series = $films->where('type' , 'like' , 'series');
 
-        return view('user.index2' , ['films' => $films , 'series' => $series]);
+        $movies = $films->where('type' , 'like' , 'movie');
+
+        return view('user.index2' , ['films' => $films , 'series' => $series , 'movies' => $movies]);
     }
 
 

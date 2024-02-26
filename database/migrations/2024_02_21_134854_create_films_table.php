@@ -25,9 +25,8 @@ return new class extends Migration
             $table->text('Poster');
             $table->string('type');
             $table->decimal('rating', 5, 2)->change();
-            $table->enum('statut', ['1', '0'])->default('1');
-            $table->string('length'); 
-            $table->enum('presentation_time', ['20h', '23h']); 
+            $table->enum('statut', ['2','1','0'])->default('1');
+            $table->enum('presentation_time', ['20h', '23h'])->nullable(); 
             $table->text('description')->nullable();
             $table->timestamps();
         });

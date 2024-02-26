@@ -13,7 +13,7 @@
 
 
 @php
-$random = rand(1,15);
+$random = rand(1,16);
 $randomIndex = rand(0, count($films[$random]->images) - 1)
 @endphp
 
@@ -63,9 +63,9 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="flex gap-3">
     
-<div class="poster">
-  <img src="{{$films[$random]->Poster}}" class="bg-image" alt="">
-  </div>
+<div class="poster" style="background-image : url('{{$films[$random]->Poster}}')">
+
+</div>
 
 
   <div class="flex flex-col gap-1 movieinfos text-white">
@@ -97,7 +97,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
     <h2 class="font-bold text-xl">{{$films[$random]->type}}</h2>
 
 
-    <h5>{{$films[$random]->plot}}</h5>
+    <h5>{{$films[$random]->description}}</h5>
   </div>
 
 
@@ -119,7 +119,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
-<section id="page2">
+<section id="page2" class="flex gap-2 flex-col">
 
 <div class="available text-white flex flex-col gap-2">
 
@@ -128,17 +128,56 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="flex flex-wrap gap-4">
 
+
+
+
+
+
+
+
+
+    
+  </div>
+
+    
+</div>
+
+
+<div class="available text-white flex flex-col gap-2">
+
+<h2>Series</h2>
+
+
+<div class="flex flex-wrap gap-4">
+
 @foreach($series as $serie)
 
-<div class="movie">
-  <img src="{{$serie->Poster}}" alt="">
+  <div class="movie" style="background-image:url('{{$serie->Poster}}')"></div>
+
+@endforeach
+
+</div>
+
+    
 </div>
 
 
 
+
+<div class="available text-white flex flex-col gap-2">
+
+<h2>Movies</h2>
+
+
+<div class="flex flex-wrap gap-4">
+
+@foreach($movies as $movie)
+
+  <div class="movie" style="background-image:url('{{$movie->Poster}}')"></div>
+
 @endforeach
-    
-  </div>
+
+</div>
 
     
 </div>

@@ -147,61 +147,18 @@ body {
 
 
 #content main .poster {
-    height: 15rem;
-    width: 14rem;
-    position: relative;
+    height: 18rem;
+    width: 12rem;
+    background-position: center;
+    background-size: cover;
     transition: rotate var(--timing) ease;
 }
 
-.poster img {
-    width: 100%;
-    height: 100%;
-}
 
 
 
-.poster:hover {
-    rotate: x var(--rotation);
-  }
 
-.poster::after {
-    content: '';
-    position: absolute;
-    inset: 80% 0.5rem 0.5rem;
-    translate: 0;
-    transform: translateZ(-100px);
-    background-color: rgba(107, 0, 0, 0.527);
-    filter: blur(1rem);
-    z-index: 1;
-    transition: rotate var(--timing), translate var(--timing);
-}
 
-.poster::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* background-color: lime; */
-    z-index: 100;
-    background-image: radial-gradient(circle ,transparent 7rem, black);
-    opacity: 0;
-    transition: opacity var(--timing);
-}
-
-.poster:hover::before {
-    opacity: 1;
-}
-.poster:hover::after {
-    rotate: x calc(var(--rotation) * -1);
-    translate: 0 60px;
-}
-
-.bg-image {
-    position: absolute;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
 
 
   #content main .movieinfos p {
@@ -210,7 +167,7 @@ body {
 }
 
 #content main h5 {
-    width: 40%;
+    width: 30rem;
 }
 
 #content main .genre h4 {
@@ -233,7 +190,7 @@ body {
 
 
 #page2 {
-    height: 100vh;
+    min-height: 100vh;
     width: calc(100% - 6rem);
     position: relative;
     top: calc(0+100vh);
@@ -248,6 +205,7 @@ body {
 
 #page2 .available {
     width: 100%;
+    min-height: 22rem;
 }
 
 #page2 .available h2 {
@@ -257,11 +215,8 @@ body {
 }
 
 #page2 .available div .movie {
-    height: 12rem;
-    width: 10rem;
-}
-
-#page2 .available div .movie img {
-    height: 100%;
-    width: 100%;
+    height: 18rem;
+    width: 12rem;
+    background-position: center;
+    background-size: cover;
 }

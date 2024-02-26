@@ -26,11 +26,16 @@ Route::get('auth/google/call-back' , [GoogleAuthController::class, 'callbackGoog
 
 Route::middleware(['auth' , 'member'])->group(function () {
     Route::get('/' , [PagesController::class , 'index'])->name('member.index');
+    Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
+    Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation'])->name('film.reservation');
+    Route::post('/index/film/{id}/reservation' , [reservationController::class , 'reservation'])->name('stystemeReservation');
+    Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
+    Route::put('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
 });
 
 Route::middleware(['auth' , 'admin'])->group(function() {
     Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
-    Route::get('/insertFilms' , [AdminController::class , 'insertFilm'])->name('dashboard');
+    Route::get('/insertFilms' , [AdminController::class , 'insertFilm']);
     Route::get('/editData' , [AdminController::class , 'statistiqueFilms']);
     Route::post('/update' , [AdminController::class , 'updateMovie']);
 
@@ -59,11 +64,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/index/film/{id}' , [filmController::class , 'showFilm'])->name('film.show');
-Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation']);
-Route::post('/index/film/{id}/reservation' , [reservationController::class , 'reservation'])->name('stystemeReservation');
-Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
-Route::put('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
+
 
 
 

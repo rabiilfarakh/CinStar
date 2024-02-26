@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
-use App\Models\images;
+use App\Models\Image;
+
 
 class filmController extends Controller
 {
     public function showFilm($id){
         $film = Film::findOrFail($id); 
-        $images = images::where('film_id', $id)->get();
+        $images = Image::where('film_id', $id)->get();
         return view('user.film',compact('film','images'));
     }
 

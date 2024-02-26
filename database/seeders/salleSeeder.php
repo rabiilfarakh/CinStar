@@ -13,6 +13,6 @@ class salleSeeder extends Seeder
      */
     public function run(): void
     {
-        Salle::factory()->count(10)->create();
+        Salle::factory()->count(4)->create();
     }
 }
