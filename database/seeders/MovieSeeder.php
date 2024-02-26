@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Image; 
+use App\Movie; // Assuming you have a Movie model
+use App\Models\Image; // Assuming you have an Image model
 use App\Models\Film;
-use Carbon\Carbon; 
+use Carbon\Carbon; // For date handling
 
-class filmSeeder extends Seeder
+class MovieSeeder extends Seeder
 {
     public function run()
     {
@@ -508,7 +508,5 @@ class filmSeeder extends Seeder
                 ]);
             }
         }
-
-        
     }
 }

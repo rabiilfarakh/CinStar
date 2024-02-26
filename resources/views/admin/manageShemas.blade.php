@@ -30,10 +30,11 @@
                     @endfor
                 </div>
             </div>
+            <button id="submitButton" class="mt-5 bg-red-600 w-40 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Submit
+            </button>
         </div>
-        <button id="submitButton" class="ml-16 mt-5 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-            Submit
-        </button>
+
     </form>
     
 

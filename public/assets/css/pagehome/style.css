@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+@font-face {
+    font-family: Dx Slight;
+    src: url(../../font/dxslight-mediumultra-free-personal-use.otf);
+}
+
+@font-face {
+    font-family: against;
+    src: url(../../font/against\ regular.otf);
+}
+
+@font-face {
+    font-family: Brigends;
+    src: url(../../font/brigends-expanded-font-1705392758-0/brigendsexpanded-nrek1.otf);
+}
+
+@font-face {
+    font-family: MADE TOMMY;
+    src: url(../../font/MADE\ TOMMY\ Light_PERSONAL\ USE.otf);
+}
+
+@font-face {
+    font-family: netflix-bold;
+    src: url(../../font/NetflixSans-Bold.otf);
+}
+@font-face {
+    font-family: netflix-medium;
+    src: url(../../font/NetflixSans-Medium.otf);
+}
+@font-face {
+    font-family: netflix-regular;
+    src: url(../../font/NetflixSans-Regular.otf);
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: rgb(52, 46, 55);
+    --darkv2: #0f0f10;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+    --sidebar : rgb(16, 15, 51);
+    --gold: #ffb338;
+  --light-shadow: #77571d;
+  --dark-shadow: #3e2904;
+  --timing: 400ms;
+  --rotation: 20deg;
+}
+
+
+body {
+    background-color: var(--darkv2);
+    perspective: 1000px;
+}
+
+#sidebar {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 6rem;
+	background: black;
+    height: 100vh;
+	z-index: 1000;
+	font-family: var(--lato);
+	transition: .3s ease;
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
+
+#sidebar::--webkit-scrollbar {
+	display: none;
+}
+
+#sidebar  i {
+    color: white;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: 300ms ease;
+    font-weight: lighter;
+}
+
+#sidebar i.active {
+    padding-bottom: 5px;
+    border-bottom: 6px solid red;
+    border-radius: 10px;
+}
+
+#sidebar  i:hover {
+    transform: scale(1.1);
+}
+
+#content {
+	width: calc(100% - 6rem);
+	left: 6rem;
+    height: 100vh;
+	transition: .3s ease;
+    background-color: white;
+    background-size: cover;
+    background-position: calc(10deg );
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    position: absolute;
+    top: 0;
+}
+
+
+
+#content main {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#content .logo span {
+    font-family: "Inter", sans-serif;
+}
+
+
+
+
+#content main h1 {
+    font-size: 5rem;
+    /* opacity: 0.5; */
+    color: white;
+    font-weight: bold;
+    font-family: netflix-bold;
+}
+
+
+#content main .poster {
+    height: 15rem;
+    width: 14rem;
+    position: relative;
+    transition: rotate var(--timing) ease;
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.poster:hover {
+    rotate: x var(--rotation);
+  }
+
+.poster::after {
+    content: '';
+    position: absolute;
+    inset: 80% 0.5rem 0.5rem;
+    translate: 0;
+    transform: translateZ(-100px);
+    background-color: rgba(107, 0, 0, 0.527);
+    filter: blur(1rem);
+    z-index: 1;
+    transition: rotate var(--timing), translate var(--timing);
+}
+
+.poster::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background-color: lime; */
+    z-index: 100;
+    background-image: radial-gradient(circle ,transparent 7rem, black);
+    opacity: 0;
+    transition: opacity var(--timing);
+}
+
+.poster:hover::before {
+    opacity: 1;
+}
+.poster:hover::after {
+    rotate: x calc(var(--rotation) * -1);
+    translate: 0 60px;
+}
+
+.bg-image {
+    position: absolute;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+
+  #content main .movieinfos p {
+    font-size: 1.2rem;
+    font-family: var(--lato);
+}
+
+#content main h5 {
+    width: 40%;
+}
+
+#content main .genre h4 {
+    border: 1px solid white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+}
+#content main .genre h4:hover {
+    background-color: rgb(81, 81, 81);
+}
+
+
+
+
+#content main div .plot {
+    width: 70%;
+}
+
+
+
+#page2 {
+    height: 100vh;
+    width: calc(100% - 6rem);
+    position: relative;
+    top: calc(0+100vh);
+    left: 6rem;
+    padding: 1rem;
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.63), rgba(0, 0, 0,1)),
+    url(../../../img/Scary-Movies-800x400w.jpg);
+  }
+
+
+
+#page2 .available {
+    width: 100%;
+}
+
+#page2 .available h2 {
+    font-family: netflix-bold;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+#page2 .available div .movie {
+    height: 12rem;
+    width: 10rem;
+}
+
+#page2 .available div .movie img {
+    height: 100%;
+    width: 100%;
+}
