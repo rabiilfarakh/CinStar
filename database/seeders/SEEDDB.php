@@ -1,16 +1,20 @@
 <?php
 
+namespace Database\Seeders;
+
+use App\Models\Film;
+use App\Models\Image;
+use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Image; 
-use App\Models\Film;
-use Carbon\Carbon; 
 
-class filmSeeder extends Seeder
+class SEEDDB extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run()
     {
-
  $movies = [
    [
          "Title" => "Avatar", 
@@ -26,7 +30,7 @@ class filmSeeder extends Seeder
          "Language" => "English, Spanish", 
          "Country" => "USA, UK", 
          "Awards" => "Won 3 Oscars. Another 80 wins & 121 nominations.", 
-         "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg", 
+         "Poster" => "https://m.media-amazon.com/images/M/MV5BZDA0OGQxNTItMDZkMC00N2UyLTg3MzMtYTJmNjg3Nzk5MzRiXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg", 
          "Metascore" => "83", 
          "imdbRating" => "7.9", 
          "imdbVotes" => "890,617", 
@@ -55,7 +59,7 @@ class filmSeeder extends Seeder
                "Language" => "English", 
                "Country" => "USA", 
                "Awards" => "9 wins & 21 nominations.", 
-               "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTU4NzMyNDk1OV5BMl5BanBnXkFtZTcwOTEwMzU1MQ@@._V1_SX300.jpg", 
+               "Poster" => "https://m.media-amazon.com/images/M/MV5BYTE1ZTBlYzgtNmMyNS00ZTQ2LWE4NjEtZjUxNDJkNTg2MzlhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_FMjpg_UX1000_.jpg", 
                "Metascore" => "65", 
                "imdbRating" => "7.2", 
                "imdbVotes" => "533,874", 
@@ -83,7 +87,7 @@ class filmSeeder extends Seeder
                      "Language" => "English", 
                      "Country" => "USA", 
                      "Awards" => "16 wins & 42 nominations.", 
-                     "Poster" => "http://ia.media-imdb.com/images/M/MV5BMjAzNTkzNjcxNl5BMl5BanBnXkFtZTYwNDA4NjE3._V1_SX300.jpg", 
+                     "Poster" => "https://m.media-amazon.com/images/M/MV5BMTEwNTU2MjAwMDdeQTJeQWpwZ15BbWU3MDk2Njc2Njk@._V1_.jpg", 
                      "Metascore" => "52", 
                      "imdbRating" => "7.7", 
                      "imdbVotes" => "611,046", 
@@ -110,7 +114,7 @@ class filmSeeder extends Seeder
                            "Language" => "English, Russian", 
                            "Country" => "USA", 
                            "Awards" => "Nominated for 1 Oscar. Another 34 wins & 75 nominations.", 
-                           "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SX300.jpg", 
+                           "Poster" => "https://m.media-amazon.com/images/M/MV5BNDYxNjQyMjAtNTdiOS00NGYwLWFmNTAtNThmYjU5ZGI2YTI1XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", 
                            "Metascore" => "69", 
                            "imdbRating" => "8.1", 
                            "imdbVotes" => "1,003,301", 
@@ -139,7 +143,7 @@ class filmSeeder extends Seeder
                                  "Language" => "English, French", 
                                  "Country" => "USA", 
                                  "Awards" => "Nominated for 5 Oscars. Another 35 wins & 154 nominations.", 
-                                 "Poster" => "http://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg", 
+                                 "Poster" => "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_FMjpg_UX1000_.jpg", 
                                  "Metascore" => "75", 
                                  "imdbRating" => "8.2", 
                                  "imdbVotes" => "786,985", 
@@ -168,7 +172,7 @@ class filmSeeder extends Seeder
                                        "Language" => "English", 
                                        "Country" => "USA, UK", 
                                        "Awards" => "Won 1 Oscar. Another 39 wins & 134 nominations.", 
-                                       "Poster" => "http://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg", 
+                                       "Poster" => "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg", 
                                        "Metascore" => "74", 
                                        "imdbRating" => "8.6", 
                                        "imdbVotes" => "937,412", 
@@ -197,7 +201,7 @@ class filmSeeder extends Seeder
                                              "Language" => "English", 
                                              "Country" => "USA, UK", 
                                              "Awards" => "Won 1 Golden Globe. Another 185 wins & 334 nominations.", 
-                                             "Poster" => "http://ia.media-imdb.com/images/M/MV5BMjM5OTQ1MTY5Nl5BMl5BanBnXkFtZTgwMjM3NzMxODE@._V1_SX300.jpg", 
+                                             "Poster" => "https://m.media-amazon.com/images/M/MV5BYTRiNDQwYzAtMzVlZS00NTI5LWJjYjUtMzkwNTUzMWMxZTllXkEyXkFqcGdeQXVyNDIzMzcwNjc@._V1_.jpg", 
                                              "Metascore" => "N/A", 
                                              "imdbRating" => "9.5", 
                                              "imdbVotes" => "1,046,830", 
@@ -227,7 +231,7 @@ class filmSeeder extends Seeder
                                                    "Language" => "English, Old English, Norse, Old, Latin", 
                                                    "Country" => "Ireland, Canada", 
                                                    "Awards" => "Nominated for 7 Primetime Emmys. Another 17 wins & 49 nominations.", 
-                                                   "Poster" => "http://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg", 
+                                                   "Poster" => "https://m.media-amazon.com/images/M/MV5BZWNlZmNiNzItYWMwNC00ODYxLThlNjYtMjU3NzlmNDQxMTY2XkEyXkFqcGdeQXVyMTA3MzQ4MTc0._V1_FMjpg_UX1000_.jpg", 
                                                    "Metascore" => "N/A", 
                                                    "imdbRating" => "8.6", 
                                                    "imdbVotes" => "198,041", 
@@ -257,7 +261,7 @@ class filmSeeder extends Seeder
                                                          "Language" => "English", 
                                                          "Country" => "USA", 
                                                          "Awards" => "Nominated for 4 Primetime Emmys. Another 3 wins & 22 nominations.", 
-                                                         "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTY2MjMwNDE4OV5BMl5BanBnXkFtZTgwNjI1NjU0OTE@._V1_SX300.jpg", 
+                                                         "Poster" => "https://m.media-amazon.com/images/M/MV5BMmUyOTdjMGEtN2RmNC00YzUwLTg5ZDEtMTI1NWE4ZjcwN2ViXkEyXkFqcGdeQXVyNTA3MTU2MjE@._V1_FMjpg_UX1000_.jpg", 
                                                          "Metascore" => "N/A", 
                                                          "imdbRating" => "8.0", 
                                                          "imdbVotes" => "133,375", 
@@ -287,7 +291,7 @@ class filmSeeder extends Seeder
                                                                "Language" => "English", 
                                                                "Country" => "USA", 
                                                                "Awards" => "1 win & 6 nominations.", 
-                                                               "Poster" => "http://ia.media-imdb.com/images/M/MV5BOTA4NTkzMjUzOF5BMl5BanBnXkFtZTgwNzg5ODkxOTE@._V1_SX300.jpg", 
+                                                               "Poster" => "https://m.media-amazon.com/images/M/MV5BMTg0NDMyMzEzOF5BMl5BanBnXkFtZTgwNTIzODQxMjI@._V1_FMjpg_UX1000_.jpg", 
                                                                "Metascore" => "N/A", 
                                                                "imdbRating" => "8.0", 
                                                                "imdbVotes" => "14,770", 
@@ -317,7 +321,7 @@ class filmSeeder extends Seeder
                                                                      "Language" => "English, Spanish", 
                                                                      "Country" => "USA", 
                                                                      "Awards" => "Nominated for 2 Golden Globes. Another 4 nominations.", 
-                                                                     "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTU0ODQ4NDg2OF5BMl5BanBnXkFtZTgwNzczNTE4OTE@._V1_SX300.jpg", 
+                                                                     "Poster" => "https://m.media-amazon.com/images/M/MV5BNmFjODU3YzgtMGUwNC00ZGI3LWFkZjQtMjkxZDc3NmQ1MzcyXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_FMjpg_UX1000_.jpg", 
                                                                      "Metascore" => "N/A", 
                                                                      "imdbRating" => "8.9", 
                                                                      "imdbVotes" => "118,680", 
@@ -347,7 +351,7 @@ class filmSeeder extends Seeder
                                                                            "Language" => "English, Spanish", 
                                                                            "Country" => "USA", 
                                                                            "Awards" => "Won 2 Golden Globes. Another 132 wins & 218 nominations.", 
-                                                                           "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTQ0ODYzODc0OV5BMl5BanBnXkFtZTgwMDk3OTcyMDE@._V1_SX300.jpg", 
+                                                                           "Poster" => "https://m.media-amazon.com/images/M/MV5BYmQ4YWMxYjUtNjZmYi00MDQ1LWFjMjMtNjA5ZDdiYjdiODU5XkEyXkFqcGdeQXVyMTMzNDExODE5._V1_.jpg", 
                                                                            "Metascore" => "N/A", 
                                                                            "imdbRating" => "9.5", 
                                                                            "imdbVotes" => "889,883", 
@@ -378,7 +382,7 @@ class filmSeeder extends Seeder
                                                                                  "Language" => "English", 
                                                                                  "Country" => "USA", 
                                                                                  "Awards" => "N/A", 
-                                                                                 "Poster" => "http://ia.media-imdb.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg", 
+                                                                                 "Poster" => "https://lumiere-a.akamaihd.net/v1/images/p_drstrangeinthemultiverseofmadness_245_476cabb1.jpeg",
                                                                                  "Metascore" => "N/A", 
                                                                                  "imdbRating" => "N/A", 
                                                                                  "imdbVotes" => "N/A", 
@@ -406,9 +410,10 @@ class filmSeeder extends Seeder
                                                                                        "Language" => "English", 
                                                                                        "Country" => "USA", 
                                                                                        "Awards" => "1 nomination.", 
-                                                                                       "Poster" => "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMzI2OTA3OF5BMl5BanBnXkFtZTgwNDg5NjQ0OTE@._V1_SY1000_CR0,0,674,1000_AL_.jpg", 
+                                                                                    
                                                                                        "Metascore" => "N/A", 
                                                                                        "imdbRating" => "N/A", 
+                                                                                       "Poster" => "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_FMjpg_UX1000_.jpg",
                                                                                        "imdbVotes" => "N/A", 
                                                                                        "imdbID" => "tt3748528", 
                                                                                        "Type" => "movie", 
@@ -436,11 +441,11 @@ class filmSeeder extends Seeder
                                                                                              "Language" => "English", 
                                                                                              "Country" => "UK, France, USA, Hong Kong", 
                                                                                              "Awards" => "N/A", 
-                                                                                             "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTU2MTQwMjU1OF5BMl5BanBnXkFtZTgwMDA5NjU5ODE@._V1_SX300.jpg", 
                                                                                              "Metascore" => "N/A", 
                                                                                              "imdbRating" => "N/A", 
                                                                                              "imdbVotes" => "N/A", 
                                                                                              "imdbID" => "tt2094766", 
+                                                                                             "Poster" => "https://m.media-amazon.com/images/M/MV5BMTc3MDYyNzA3NF5BMl5BanBnXkFtZTgwMjM5NTg4ODE@._V1_.jpg",
                                                                                              "Type" => "movie", 
                                                                                              "Response" => "True", 
                                                                                              "Images" => [
@@ -465,12 +470,12 @@ class filmSeeder extends Seeder
                                                                                                    "Language" => "English", 
                                                                                                    "Country" => "USA", 
                                                                                                    "Awards" => "N/A", 
-                                                                                                   "Poster" => "http://ia.media-imdb.com/images/M/MV5BMTcyMzc1MjI5MF5BMl5BanBnXkFtZTgwMzE4ODY2OTE@._V1_SX300.jpg", 
                                                                                                    "Metascore" => "N/A", 
                                                                                                    "imdbRating" => "N/A", 
                                                                                                    "imdbVotes" => "N/A", 
                                                                                                    "imdbID" => "tt3322314", 
                                                                                                    "Type" => "series", 
+                                                                                                   "Poster" => "https://m.media-amazon.com/images/M/MV5BMTcyMzc1MjI5MF5BMl5BanBnXkFtZTgwMzE4ODY2OTE@._V1_FMjpg_UX1000_.jpg",
                                                                                                    "totalSeasons" => "1", 
                                                                                                    "Response" => "True", 
                                                                                                    "Images" => [
@@ -495,8 +500,10 @@ class filmSeeder extends Seeder
                 'Awards' => $movieData['Awards'],
                 'genre' => $movieData['Genre'],
                 'acteur' => $movieData['Actors'],
-                'poster' => $movieData['Poster'],
-                'date' => Carbon::now(), 
+                'Poster' => $movieData['Poster'],
+                'date' => Carbon::now(),
+                'plot' => $movieData['Plot'],
+                'type' => $movieData['Type'],
             ]);
 
             $movieId = $movie->id;

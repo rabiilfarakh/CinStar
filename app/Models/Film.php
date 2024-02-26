@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Film extends Model
 {
     protected $fillable = [
-        'statut',
         'title',
+        'year',
+        'runtime',
+        'released',
+        'Awards',
         'genre',
         'acteur',
         'date',
-        'salle_id',
         'rating',
+        'Poster',
         'length',
         'presentation_time',
         'description',
