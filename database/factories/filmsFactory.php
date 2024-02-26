@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Film;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use  App\Models\Film;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Film>
