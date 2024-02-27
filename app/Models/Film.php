@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use laravel\Scout\Searchable;
 
 class Film extends Model
 {
+
     protected $fillable = [
         'title',
         'year',
@@ -38,6 +40,16 @@ class Film extends Model
     public function images()
     {
         return $this->hasMany(Image::class);
+    }
+
+
+    public function toSearchableArray()
+    {
+        return [
+            'title' => $this->title,
+            'genre' => $this->genre,
+            'acteur' => $this->acteur,
+        ];
     }
 }
 

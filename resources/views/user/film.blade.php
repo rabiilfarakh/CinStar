@@ -21,7 +21,6 @@ $random = rand(0,count($movie->images)-1);
 
 
 
- 
 
 
 <div class="content active">
@@ -109,6 +108,7 @@ $genresArray = explode(',', $genres);
 
 
 
+
 <script>
 
   var items = document.querySelectorAll('.movieimage');
@@ -125,6 +125,7 @@ $genresArray = explode(',', $genres);
     }
 
     showSlider();
+
   }
 
 
@@ -151,6 +152,8 @@ $genresArray = explode(',', $genres);
 
    document.querySelector('.page1').style.backgroundImage = 'linear-gradient(to left, rgba(139, 0, 0, 0.32), rgba(0, 0, 0, 1)), url(' + url + ')';
   }
+
+
 
 </script>
 
