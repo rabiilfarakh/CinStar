@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AJAXController;
 use App\Http\Controllers\GoogleAuthController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,13 @@ Route::middleware(['auth' , 'member'])->group(function () {
     Route::post('/index/film/{id}/reservation' , [reservationController::class , 'reservation'])->name('stystemeReservation');
     Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
     Route::put('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
+
+
+
+
+    //AJAX
+
+    Route::get('/search', [AJAXController::class, 'index'])->name('search');
 });
 
 Route::middleware(['auth' , 'admin'])->group(function() {

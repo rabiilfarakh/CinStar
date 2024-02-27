@@ -12,6 +12,8 @@
 
 
 
+
+
 @php
 $random = rand(1,15);
 $randomIndex = rand(0, count($films[$random]->images) - 1)
@@ -21,8 +23,11 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
-<div id="sidebar" class="flex flex-col items-center justify-center gap-8 h-full w-full">
-<i class='bx bx-search'></i>
+<div id="sidebar" class="">
+
+
+<div class="left">
+<i class='bx bx-search' data-modal-target="default-modal" data-modal-toggle="default-modal"></i>
 <i class='bx bx-home active' ></i>
 <i class='bx bx-camera-movie' ></i>
 
@@ -41,8 +46,33 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
         
             </div>
 
+</div>
+
+
+<div class="right flex flex-col gap-5">
+  <div class="form">
+
+  <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+    <input type="text" id="searchinput" name="search">
+    <ion-icon class="iconsearch" name="search-outline"></ion-icon>
+  </div>
+
+
+  <div class="field  gap-2">
+
+
+  </div>
+</div>
+
+
+
+
+
         
 </div>
+
+
+
 
 
 
@@ -53,6 +83,13 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 <section id="content" class="" style="background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0,1)),
     url({{$films[$random]->images[$randomIndex]->image}});">
+
+
+
+
+
+
+
 
 
 
@@ -188,6 +225,83 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+
+var filmRoute = "{{ route('film.show', ['id' => ':id']) }}"
+
+document.querySelector('.form input').addEventListener('input', function() {
+    let inputValue = this.value;
+
+    let xml = new XMLHttpRequest();
+    var container = document.querySelector('.field');
+
+    xml.onload = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let movies = JSON.parse(this.responseText);
+
+            if (inputValue == '') {
+                container.innerHTML = '';
+            } else {
+                container.innerHTML = ''; // Clear the container before appending new movies
+                movies.forEach(function(movie) {
+                  let a = document.createElement('a');
+                  a.setAttribute('href', filmRoute.replace(':id', movie['id'])); 
+                    let div = document.createElement('div');
+                    div.style.backgroundImage = 'url(' + movie['Poster'] + ')';
+                    div.classList.add('movie');
+                    a.appendChild(div);
+                    container.appendChild(a);
+                });
+            }
+        }
+    };
+
+    let url = '/search?search=' + inputValue;
+    xml.open('GET', url);
+    xml.send();
+});
+
+
+
+
+
+            document.querySelector('.bx-search').addEventListener('click', function() {
+    var rightSidebar = document.querySelector('#sidebar .right');
+    if (rightSidebar.style.display === "flex" && rightSidebar.style.width === "93vw") {
+
+      document.querySelector('#sidebar .right .form').classList.remove('active');
+        rightSidebar.style.width = '0';
+        document.querySelector('#sidebar').style.zIndex = '0';
+        setTimeout(function() {
+          
+            rightSidebar.style.display = "none";
+            
+
+        }, 700); 
+    } else {
+      document.querySelector('#sidebar').style.zIndex = '3000';
+        rightSidebar.style.display = "flex";
+        rightSidebar.classList.add('active');
+        setTimeout(function() {
+            rightSidebar.style.width = '93vw';
+
+        }, 100); 
+
+
+        setTimeout(function() {
+            document.querySelector('#sidebar .right .form').classList.add('active');
+        },1000)
+    }
+});
+
+
+
+
+</script>
 
 
 
