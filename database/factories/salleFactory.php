@@ -15,7 +15,7 @@ class salleFactory extends Factory
     {
         return [
             'name' => $this->faker->randomElement(["salle A","salle B","salle C","salle D"]),
-            'taille' => $this->faker->numberBetween('50','150'),
+            'taille' => $this->faker->numberBetween('20','40'),
             'shema' =>$this->faker->text
         ];
     }

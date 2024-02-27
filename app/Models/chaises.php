@@ -9,6 +9,13 @@ class chaises extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'salle_id',
+        'status',
+        'display',
+        'type',
+    ];
+
     public function salle()
     {
         return $this->belongsTo(Salle::class);
