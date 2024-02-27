@@ -13,7 +13,7 @@
 
 
 @php
-$random = rand(1,16);
+$random = rand(1,15);
 $randomIndex = rand(0, count($films[$random]->images) - 1)
 @endphp
 
@@ -128,16 +128,15 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="flex flex-wrap gap-4">
 
+@foreach($films as $film)
 
+@if($film->statut == 2)
+<a href="{{ route('film.show' , ['id' => $film->id])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
 
+@endif
 
-
-
-
-
-
-    
-  </div>
+@endforeach
+</div>
 
     
 </div>
@@ -152,7 +151,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 @foreach($series as $serie)
 
-  <div class="movie" style="background-image:url('{{$serie->Poster}}')"></div>
+<a href="{{ route('film.show' , ['id' => $serie->id])}}"><div class="movie" style="background-image:url('{{$serie->Poster}}')"></div></a>
 
 @endforeach
 
@@ -173,7 +172,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 @foreach($movies as $movie)
 
-  <div class="movie" style="background-image:url('{{$movie->Poster}}')"></div>
+  <a href="{{ route('film.show' , ['id' => $movie->id])}}"><div class="movie" style="background-image:url('{{$movie->Poster}}')"></div></a>
 
 @endforeach
 

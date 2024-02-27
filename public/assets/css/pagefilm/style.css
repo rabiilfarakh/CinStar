@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+
+@font-face {
+    font-family: Dx Slight;
+    src: url(../../font/dxslight-mediumultra-free-personal-use.otf);
+}
+
+@font-face {
+    font-family: against;
+    src: url(../../font/against\ regular.otf);
+}
+
+@font-face {
+    font-family: Brigends;
+    src: url(../../font/brigends-expanded-font-1705392758-0/brigendsexpanded-nrek1.otf);
+}
+
+@font-face {
+    font-family: MADE TOMMY;
+    src: url(../../font/MADE\ TOMMY\ Light_PERSONAL\ USE.otf);
+}
+
+@font-face {
+    font-family: netflix-bold;
+    src: url(../../font/NetflixSans-Bold.otf);
+}
+@font-face {
+    font-family: netflix-medium;
+    src: url(../../font/NetflixSans-Medium.otf);
+}
+@font-face {
+    font-family: netflix-regular;
+    src: url(../../font/NetflixSans-Regular.otf);
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: rgb(52, 46, 55);
+    --darkv2: #0f0f10;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+    --sidebar : rgb(16, 15, 51);
+    --gold: #ffb338;
+  --light-shadow: #77571d;
+  --dark-shadow: #3e2904;
+  --timing: 400ms;
+  --rotation: 20deg;
+}
+
+body{
+    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--dark);
+}
+
+.page1 {
+    height: 100vh;
+    width: 100%;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    color: white;
+    background-position: center;
+    background-size: cover;
+}
+
+.page1 h1 {
+    font-family: netflix-bold;
+    font-size: 4rem;
+}
+
+.page1 .info p {
+    width: 35rem;
+    min-height: 5rem;
+    font-family: netflix-regular;
+}
+
+.page1 .info h3 {
+    font-size: 2rem;
+    font-family: netflix-medium;
+}
+
+.page1 .content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.page1 .content.active {
+    opacity: 1;
+    z-index: 10;
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0);
+        filter:blur(0);
+        opacity:1;
+    }
+}
+
+.page1 .content.active h1,.page1 .content.active .info {
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent 700ms 200ms ease-in-out 1 forwards;
+}
+
+
+
+.page1 .content .images {
+    width: 100%;
+    height: 10rem;
+}
+
+.page1 .content .images .movieimage {
+    height: 100%;
+    width: 20rem;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+    transition: 300ms ease;
+    filter: brightness(0.5);
+}
+
+.page1 .content .images .movieimage.active {
+    filter: brightness(1);
+}
+
+.page1 .content .images .movieimage:hover {
+    transform: scale(1.05);
+}
+
+
+
+.buy {
+    background-image: linear-gradient(to right, darkred 0%, transparent 100%);
+    padding: 0.5rem 2rem;
+    font-family: netflix-regular;
+    font-size: 1.2rem;
+}
+
+.times {
+    color: grey;
+    font-family: netflix-medium;
+    font-size: 1rem;
+}
+
+.genre {
+    background-image: linear-gradient(to right, darkred 0%, transparent 100%);
+    padding: 0.3rem 1rem;
+    border: 2px solid darkred;
+    border-radius: 100px;
+    transition: background-image 700ms ease, border-color 700ms ease;
+    cursor: pointer;
+}
+
+.genre:hover {
+    background-image: linear-gradient(to right, transparent 0%, darkred 100%);
+    border-color: transparent;
+}
+
+
+.navigation .left i , .navigation .right i {
+    background-color: darkred;
+    padding: 0.7rem;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
