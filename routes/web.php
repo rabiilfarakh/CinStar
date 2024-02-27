@@ -39,9 +39,7 @@ Route::middleware(['auth' , 'admin'])->group(function() {
     Route::get('/editData' , [AdminController::class , 'statistiqueFilms']);
     Route::post('/update' , [AdminController::class , 'updateMovie']);
 
-    // Route::get('/dashboard', function () {
-    //     return view('admin.dashboard');
-    // });
+
     Route::get('/manageResev/{id}',[AdminController::class , 'manageDash'])->name('manage');
     Route::post('/manageResev/{id}',[AdminController::class , 'schemaSalle'])->name('schema');
     Route::post('/manageResev/{id}',[AdminController::class , 'insertSchema'])->name('insertSchema');
