@@ -31,7 +31,6 @@ Route::middleware(['auth' , 'member'])->group(function () {
     Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation'])->name('film.reservation');
     Route::post('/index/film/{id}/reservation' , [reservationController::class , 'reservation'])->name('stystemeReservation');
     Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
-    Route::put('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
 
 
 
@@ -44,20 +43,20 @@ Route::middleware(['auth' , 'member'])->group(function () {
 Route::middleware(['auth' , 'admin'])->group(function() {
     Route::get('/dashboard' , [AdminController::class , 'dashboard'])->name('dashboard');
     Route::get('/insertFilms' , [AdminController::class , 'insertFilm']);
-    Route::get('/editData' , [AdminController::class , 'statistiqueFilms']);
+    Route::post('/editData' , [AdminController::class , 'statistiqueFilms']);
     Route::post('/update' , [AdminController::class , 'updateMovie']);
+    Route::delete('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
 
 
     Route::get('/manageResev/{id}',[AdminController::class , 'manageDash'])->name('manage');
     Route::post('/manageResev/{id}',[AdminController::class , 'schemaSalle'])->name('schema');
     Route::post('/manageResev/{id}',[AdminController::class , 'insertSchema'])->name('insertSchema');
+    Route::get('/statistiqueFilms',[AdminController::class , 'statistiqueFilms']);
     
     Route::get('/manageShemas', function () {
         return view('admin.manageShemas');
     });
-    Route::get('/statistiqueFilms', function () {
-        return view('admin.statistiqueFilms');
-    });
+    
 
     Route::post('/film/store', [AdminController::class, 'storeFilm'])->name('film.store');
 });

@@ -21,10 +21,9 @@ return new class extends Migration
             $table->string('Awards');
             $table->string('genre');
             $table->string('acteur');
-            $table->string('date');
+            $table->string('date')->nullable();
             $table->text('Poster');
             $table->string('type');
-            $table->decimal('rating', 5, 2)->change();
             $table->enum('statut', ['2','1','0'])->default('1');
             $table->enum('presentation_time', ['20h', '23h'])->nullable(); 
             $table->text('description')->nullable();

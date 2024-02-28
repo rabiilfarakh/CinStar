@@ -16,12 +16,11 @@ class Film extends Model
         'released',
         'Awards',
         'genre',
+        'type',
         'acteur',
         'date',
         'salle_id',
-        'rating',
         'Poster',
-        'length',
         'presentation_time',
         'description',
     ];

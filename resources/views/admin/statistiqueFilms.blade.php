@@ -10,22 +10,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     @if (session()->has('success'))
-    <script>
-        alert("{{ session('success') }}");
-    </script>
-@endif
+        <script>
+            alert("{{ session('success') }}");
+        </script>
+    @endif
 </head>
 
 <body class="bg-[#111111]">
 
-    <div class="flex justify-between">
-        <div>
+    <div class="flex">
+        <div class="md:w-[20%]  mr-auto">
             @include('layouts.sideBarAdmin')
         </div>
 
         <div
-        
-            class="md:w-[80%] overflow-x-auto overflow-y-scroll min-h-full w-full my-14 md bg-white p-4 shadow rounded-lg">
+            class="md:w-[85%] ml-auto overflow-x-auto overflow-y-scroll min-h-full w-full my-14 md bg-white p-4 shadow rounded-lg">
             <div class="my-1"></div>
             <div class="bg-gradient-to-r from-red-300 to-red-500 h-px mb-6"></div>
             <table class="w-full table-auto text-center text-sm">
@@ -36,19 +35,19 @@
                         <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
                             Title</th>
                         <th class="py-2 px-4 font-bold uppercase text-sm text-white border-b border-gray-700">
+                            Gender</th>
+                        <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
+                            Actors</th>
+                        <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
                             Type</th>
-                        <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
-                            Actor</th>
-                        <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
-                            Movie duration</th>
                         <th class="py-2 px-4font-bold uppercase text-sm text-white border-b border-gray-700">
-                            Salle Name</th>
+                            Runtime</th>
                         <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
-                            Rating</th>
+                            Released</th>
                         <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
-                            show time</th>
+                            Awards</th>
                         <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
-                            Date</th>
+                            Year</th>
                         <th class="py-2 px-4  font-bold uppercase text-sm text-white border-b border-gray-700">
                             Action</th>
                     </tr>
@@ -57,22 +56,17 @@
                     @foreach ($films as $film)
                         <tr class="hover:bg-gray-200">
                             <td class="py-2 px-4 border-b flex justify-center border-gray-700">
-                                @if ($film->images->isNotEmpty())
-                                    <img src="/storage/{{ $film->images->first()->image }}" alt="Film Image"
-                                        class="rounded-[3px] h-16 w-16">
-                                @else
-                                    <img src="https://via.placeholder.com/150" alt="No Image"
-                                        class="rounded-[3px] h-16 w-16">
-                                @endif
+                                <img src="{{ $film->Poster }}" alt="Film Image" class="rounded-[3px] h-20 w-20">
+
                             </td>
                             <td class="py-2 px-4 border-b border-gray-700">{{ $film->title }}</td>
                             <td class="py-2 px-4 border-b border-gray-700">{{ $film->genre }}</td>
                             <td class="py-2 px-4 border-b border-gray-700">{{ $film->acteur }}</td>
-                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->length }}</td>
-                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->salle->name }}</td>
-                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->rating }}</td>
-                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->presentation_time }}</td>
-                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->date }}</td>
+                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->type }}</td>
+                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->runtime }}</td>
+                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->released }}</td>
+                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->Awards }}</td>
+                            <td class="py-2 px-4 border-b border-gray-700">{{ $film->year }}</td>
                             <td class="py-2 px-4 border-b border-gray-700 relative">
                                 <div class="dropdown inline-block  relative">
                                     <button
@@ -84,8 +78,9 @@
                                         id="modalActions{{ $film->id }}">
                                         <li>
 
-                                            <form action="/editData"
+                                            <form action="/editData" method="post"
                                                 class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                                               @csrf
                                                 <input type="hidden" name="film_id" value="{{ $film->id }}">
                                                 <button type="submit">Edit</button>
                                             </form>
@@ -95,11 +90,13 @@
                                             <form action="{{ route('film.delete', ['id' => $film->id]) }}"
                                                 method="POST">
                                                 @csrf
-                                                @method('PUT')
+                                                @method('DELETE')
                                                 <button type="submit"
                                                     onclick="return confirm('Are you sure you want to delete {{ $film->title }}?')"
                                                     class="bg-gray-400 hover:bg-gray-600 py-2 px-4 block whitespace-no-wrap">Delete</button>
                                             </form>
+
+
                                         </li>
                                     </ul>
                                 </div>
@@ -121,72 +118,57 @@
                     @csrf
                     <input type="hidden" name="film_id" value="{{ $filmEdit ? $filmEdit->id : '' }}">
                     <label for="title" class="block text-sm font-bold mb-2">Title:</label>
-                    <input type="text" id="title" name="title" required
-                        value="{{ $filmEdit ? $filmEdit->title : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="text" id="title" name="title" required value="{{ $filmEdit ? $filmEdit->title : '' }}"
+                        class="bg-gray-800 appearance-none rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="genre" class="block text-sm font-bold mb-2">Type:</label>
-                    <input type="text" id="genre" name="genre" required
-                        value="{{ $filmEdit ? $filmEdit->genre : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="genre" class="block text-sm font-bold mb-2">Genre:</label>
+                    <input type="text" id="genre" name="genre" required value="{{ $filmEdit ? $filmEdit->genre : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="type" class="block text-sm font-bold mb-2">Type:</label>
+                    <input type="text" id="type" name="type" required value="{{ $filmEdit ? $filmEdit->type : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="year" class="block text-sm font-bold mb-2">Year:</label>
+                    <input type="text" id="year" name="year" required value="{{ $filmEdit ? $filmEdit->year : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="mb-4">
+                    <label for="Awards" class="block text-sm font-bold mb-2">Awards:</label>
+                    <input type="text" id="Awards" name="Awards" required value="{{ $filmEdit ? $filmEdit->Awards : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
                     <label for="acteur" class="block text-sm font-bold mb-2">Actor:</label>
-                    <input type="text" id="acteur" name="acteur" required
-                        value="{{ $filmEdit ? $filmEdit->acteur : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-4">
-                    <label for="date" class="block text-sm font-bold mb-2">Date:</label>
-                    <input type="date" id="date" name="date" required
-                        value="{{ $filmEdit ? $filmEdit->date : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                    <input type="text" id="acteur" name="acteur" required value="{{ $filmEdit ? $filmEdit->acteur : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
 
+
                 <div class="mb-4">
-                    <label for="salle_id" class="block text-sm font-bold mb-2">Salle Name:</label>
-                    <select name="salle_id" id="salle_id" required
-                    class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
-                    @foreach ($salles as $salle)
-                            <option value="{{ $salle->id }}">{{ $salle->name }}</option>
-                        @endforeach
-                    </select>
+                    <label for="released" class="block text-sm font-bold mb-2">Released:</label>
+                    <input type="text" id="released" name="released" required value="{{ $filmEdit ? $filmEdit->released : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="images" class="block text-sm font-bold mb-2">Images:</label>
-                    <input type="file" id="images" name="images[]" accept="image/*" multiple required
-                        value="{{ $filmEdit ? $film->images->first()->image : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="Poster" class="block text-sm font-bold mb-2">Poster:</label>
+                    <input type="text" id="Poster" name="Poster" required value="{{ $filmEdit ? $filmEdit->Poster : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
                 <div class="mb-4">
-                    <label for="rating" class="block text-sm font-bold mb-2">Rating:</label>
-                    <input type="number" id="rating" name="rating" min="0" max="5"
-                        value="{{ $filmEdit ? $filmEdit->rating : '' }}" step="0.1" required
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                    <label for="runtime" class="block text-sm font-bold mb-2">Movie duration:</label>
+                    <input type="text" id="runtime" name="runtime" required value="{{ $filmEdit ? $filmEdit->runtime : '' }}"
+                        class="bg-gray-800 appearance-none  rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                 </div>
-                <div class="mb-4">
-                    <label for="length" class="block text-sm font-bold mb-2">Movie duration:</label>
-                    <input type="text" id="length" name="length" required
-                        value="{{ $filmEdit ? $filmEdit->length : '' }}"
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
-                </div>
-                <div class="mb-4">
-                    <label for="presentation_time" class="block text-sm font-bold mb-2">Show
-                        Time:</label>
-                        <select name="presentation_time" id="presentation_time" required
-                        class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
-                        <option value="20h">20h</option>
-                        <option value="23h">23h</option>
-                    </select>
-                </div>
+
                 <div class="mb-4">
                     <label for="description" class="block text-sm font-bold mb-2">Description:</label>
-                    <textarea id="description" name="description" value=""
-                    class="bg-gray-800 appearance-none rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
-                    {{ $filmEdit ? $filmEdit->description : '' }}</textarea>
+                    <textarea id="description" name="description"
+                        class="bg-gray-800 appearance-none  rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">{{ $filmEdit ? $filmEdit->description : '' }}</textarea>
                 </div>
-
 
 
             </div>
