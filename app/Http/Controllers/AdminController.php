@@ -155,6 +155,28 @@ public function updateMovie(Request $request)
 
 
 
+public function updateMovieWeek(Request $request)
+{
+    $request->validate([
+        'film_id' => 'required|exists:films,id',
+        'presentation_time' => 'required|string',
+        'salle_id' => 'required|exists:salles,id',
+        'date' => 'required|string',
+    ]);
+
+    $filmId = $request->input('film_id');
+    $film = Film::find($filmId);
+
+    $film->presentation_time = $request->input('presentation_time');
+    $film->salle_id = $request->input('salle_id');
+    $film->date = $request->input('date'); 
+    $film->statut = 2;
+
+    $film->save();
+
+    return redirect('/statistiqueFilms')->with('success', 'You added the film of the week successfully');
+}
+
 
 
 }

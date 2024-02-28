@@ -46,7 +46,7 @@ Route::middleware(['auth' , 'admin'])->group(function() {
     Route::post('/editData' , [AdminController::class , 'statistiqueFilms']);
     Route::post('/update' , [AdminController::class , 'updateMovie']);
     Route::delete('/film/{id}/delete', [AdminController::class, 'deleteFilm'])->name('film.delete');
-
+    Route::post('/addFilmWeek', [AdminController::class, 'updateMovieWeek']);
 
     Route::get('/manageResev/{id}',[AdminController::class , 'manageDash'])->name('manage');
     Route::post('/manageResev/{id}',[AdminController::class , 'schemaSalle'])->name('schema');
