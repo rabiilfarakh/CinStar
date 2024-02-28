@@ -100,8 +100,10 @@
         <span id="popup-close">&times;</span>
         <div id="popup-content"></div>
         <form id="reservation-form" method="post" action="{{ route('stystemeReservation',['id' => $salle->id]) }}">
-            @csrf 
+            @csrf
+            <input type="hidden" name="salle_id" value="{{$salle->id}}">
             <input type="hidden" id="chair-id" name="chair_id">
+            <input type="hidden" value="{{$film->id}}" name="film_id">
             <button id="reservation-btn" type="submit" class="mt-5 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Réserver</button>
         </form>
     </div>
