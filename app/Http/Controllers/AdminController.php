@@ -108,7 +108,9 @@ class AdminController extends Controller
 
 public function statistiqueFilms(Request $request)
 {
+
     $salles = Salle::all();
+    dd($salles);
     $films = Film::whereHas('images')->where('statut', 1)->with('images')->get();
     $filmEdit = Film::where('id' ,$request->input('film_id') )->where('statut', 1)->with('images')->first();
     return view('admin.statistiqueFilms', [

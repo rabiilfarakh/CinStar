@@ -2,39 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Film;
 use App\Models\notification;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 
-class PagesController extends Controller
+class NotificationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $films = Film::with('images')->get();
-
-        $series = $films->where('type' , 'like' , 'series');
-
-        $movies = $films->where('type' , 'like' , 'movie');
-
-        $notifications = notification::where('user_id' , Auth::id())->get();
-
-        return view('user.index2' , ['films' => $films , 'series' => $series , 'movies' => $movies , 'notifications' => $notifications]);
+        //
     }
-
-
-    public function dashboard () {
-        return view('dashboard');
-    }
-
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +34,7 @@ class PagesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(notification $notification)
     {
         //
     }
@@ -63,7 +42,7 @@ class PagesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(notification $notification)
     {
         //
     }
@@ -71,7 +50,7 @@ class PagesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, notification $notification)
     {
         //
     }
@@ -79,7 +58,7 @@ class PagesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(notification $notification)
     {
         //
     }
