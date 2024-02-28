@@ -11,8 +11,10 @@ class reservationController extends Controller
 {
     public function showReservation($id){
         $film = Film::findOrFail($id);
+
         $tailleSalle = $film->salle->taille;
-        $salle = Salle::findOrFail($id);
+        $salleid = $film->salle_id;
+        $salle = Salle::findOrFail($salleid);
         $images = Image::where('film_id', $id)->get();
         return view('user.reservation',compact('film','tailleSalle', 'images','salle'));
     }

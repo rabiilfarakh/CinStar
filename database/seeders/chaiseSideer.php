@@ -13,6 +13,6 @@ class chaiseSideer extends Seeder
      */
     public function run(): void
     {
-        chaises::factory()->count(53)->create();
+        chaises::factory()->count(30)->create();
     }
 }

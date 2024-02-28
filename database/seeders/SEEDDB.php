@@ -502,7 +502,7 @@ class SEEDDB extends Seeder
                 'acteur' => $movieData['Actors'],
                 'Poster' => $movieData['Poster'],
                 'date' => Carbon::now(),
-                'plot' => $movieData['Plot'],
+                'description' => $movieData['Plot'],
                 'type' => $movieData['Type'],
             ]);
 

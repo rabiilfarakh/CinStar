@@ -12,6 +12,8 @@
 
 
 
+
+
 @php
 $random = rand(1,15);
 $randomIndex = rand(0, count($films[$random]->images) - 1)
@@ -21,8 +23,11 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
-<div id="sidebar" class="flex flex-col items-center justify-center gap-8 h-full w-full">
-<i class='bx bx-search'></i>
+<div id="sidebar" class="">
+
+
+<div class="left">
+<i class='bx bx-search' data-modal-target="default-modal" data-modal-toggle="default-modal"></i>
 <i class='bx bx-home active' ></i>
 <i class='bx bx-camera-movie' ></i>
 
@@ -41,8 +46,33 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
         
             </div>
 
+</div>
+
+
+<div class="right flex flex-col gap-5">
+  <div class="form">
+
+  <ion-icon class="arrow" name="arrow-back-outline"></ion-icon>
+    <input type="text" id="searchinput" name="search">
+    <ion-icon class="iconsearch" name="search-outline"></ion-icon>
+  </div>
+
+
+  <div class="field  gap-2">
+
+
+  </div>
+</div>
+
+
+
+
+
         
 </div>
+
+
+
 
 
 
@@ -56,6 +86,13 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
+
+
+
+
+
+
+
 <main class="flex flex-col">
 
 <h1>{{$films[$random]->title}}</h1>
@@ -63,9 +100,9 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="flex gap-3">
     
-<div class="poster">
-  <img src="{{$films[$random]->Poster}}" class="bg-image" alt="">
-  </div>
+<div class="poster" style="background-image : url('{{$films[$random]->Poster}}')">
+
+</div>
 
 
   <div class="flex flex-col gap-1 movieinfos text-white">
@@ -97,7 +134,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
     <h2 class="font-bold text-xl">{{$films[$random]->type}}</h2>
 
 
-    <h5>{{$films[$random]->plot}}</h5>
+    <h5>{{$films[$random]->description}}</h5>
   </div>
 
 
@@ -119,7 +156,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
-<section id="page2">
+<section id="page2" class="flex gap-2 flex-col">
 
 <div class="available text-white flex flex-col gap-2">
 
@@ -128,17 +165,55 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="flex flex-wrap gap-4">
 
+@foreach($films as $film)
+
+@if($film->statut == 2)
+<a href="{{ route('film.show' , ['id' => $film->id])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
+
+@endif
+
+@endforeach
+</div>
+
+    
+</div>
+
+
+<div class="available text-white flex flex-col gap-2">
+
+<h2>Series</h2>
+
+
+<div class="flex flex-wrap gap-4">
+
 @foreach($series as $serie)
 
-<div class="movie">
-  <img src="{{$serie->Poster}}" alt="">
+<a href="{{ route('film.show' , ['id' => $serie->id])}}"><div class="movie" style="background-image:url('{{$serie->Poster}}')"></div></a>
+
+@endforeach
+
+</div>
+
+    
 </div>
 
 
 
+
+<div class="available text-white flex flex-col gap-2">
+
+<h2>Movies</h2>
+
+
+<div class="flex flex-wrap gap-4">
+
+@foreach($movies as $movie)
+
+  <a href="{{ route('film.show' , ['id' => $movie->id])}}"><div class="movie" style="background-image:url('{{$movie->Poster}}')"></div></a>
+
 @endforeach
-    
-  </div>
+
+</div>
 
     
 </div>
@@ -150,6 +225,83 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+
+var filmRoute = "{{ route('film.show', ['id' => ':id']) }}"
+
+document.querySelector('.form input').addEventListener('input', function() {
+    let inputValue = this.value;
+
+    let xml = new XMLHttpRequest();
+    var container = document.querySelector('.field');
+
+    xml.onload = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let movies = JSON.parse(this.responseText);
+
+            if (inputValue == '') {
+                container.innerHTML = '';
+            } else {
+                container.innerHTML = ''; // Clear the container before appending new movies
+                movies.forEach(function(movie) {
+                  let a = document.createElement('a');
+                  a.setAttribute('href', filmRoute.replace(':id', movie['id'])); 
+                    let div = document.createElement('div');
+                    div.style.backgroundImage = 'url(' + movie['Poster'] + ')';
+                    div.classList.add('movie');
+                    a.appendChild(div);
+                    container.appendChild(a);
+                });
+            }
+        }
+    };
+
+    let url = '/search?search=' + inputValue;
+    xml.open('GET', url);
+    xml.send();
+});
+
+
+
+
+
+            document.querySelector('.bx-search').addEventListener('click', function() {
+    var rightSidebar = document.querySelector('#sidebar .right');
+    if (rightSidebar.style.display === "flex" && rightSidebar.style.width === "93vw") {
+
+      document.querySelector('#sidebar .right .form').classList.remove('active');
+        rightSidebar.style.width = '0';
+        document.querySelector('#sidebar').style.zIndex = '0';
+        setTimeout(function() {
+          
+            rightSidebar.style.display = "none";
+            
+
+        }, 700); 
+    } else {
+      document.querySelector('#sidebar').style.zIndex = '3000';
+        rightSidebar.style.display = "flex";
+        rightSidebar.classList.add('active');
+        setTimeout(function() {
+            rightSidebar.style.width = '93vw';
+
+        }, 100); 
+
+
+        setTimeout(function() {
+            document.querySelector('#sidebar .right .form').classList.add('active');
+        },1000)
+    }
+});
+
+
+
+
+</script>
 
 
 

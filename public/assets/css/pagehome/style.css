@@ -68,19 +68,124 @@ body {
     perspective: 1000px;
 }
 
+
+
+
+
+
+
+
 #sidebar {
 	position: sticky;
 	top: 0;
 	left: 0;
-	width: 6rem;
-	background: black;
     height: 100vh;
-	z-index: 1000;
+    width: 100%;
 	font-family: var(--lato);
 	transition: .3s ease;
 	overflow-x: hidden;
 	scrollbar-width: none;
+    display: flex;
+    transition: 700ms ease-in-out;
 }
+
+#sidebar.active {
+    z-index: 3000;
+}
+
+#sidebar .left {
+    width: 7vw;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3.5rem;
+    transition: 700ms ease-in-out;
+}
+
+#sidebar .right {
+    width: 0;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.772);
+    transition: 700ms ease-in-out;
+    animation: showContent 700ms 200ms ease-in-out 1 forwards;
+}
+
+#sidebar .right .form {
+    display: none;
+    height: 2rem;
+}
+
+#sidebar .right .form.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sidebar .right .form .arrow , #sidebar .right .form .iconsearch {
+    color: black;
+    background-color: white;
+    height: 100%;
+    padding: 0 1rem;
+   
+}
+
+#sidebar .right .form .arrow{
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#sidebar .right .form .iconsearch {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+}
+
+
+#sidebar .right.active {
+    filter: blur(20px);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+#sidebar .right .form input {
+    width: 20rem;
+    height: 100%;
+    border: none;
+}
+
+
+@keyframes showContent {
+    to {
+        transform: translateY(0);
+        filter:blur(0);
+        opacity:1;
+    }
+}
+
+
+#sidebar .right .field {
+    min-height: 80vh;
+    width: 100%;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+#sidebar .right .field .movie {
+    height: 18rem;
+    width: 12rem;
+    background-position: center;
+    background-size: cover;
+    transition: rotate var(--timing) ease;
+    grid-column: span 1;
+}
+
+
+
 
 #sidebar::--webkit-scrollbar {
 	display: none;
@@ -147,61 +252,18 @@ body {
 
 
 #content main .poster {
-    height: 15rem;
-    width: 14rem;
-    position: relative;
+    height: 18rem;
+    width: 12rem;
+    background-position: center;
+    background-size: cover;
     transition: rotate var(--timing) ease;
 }
 
-.poster img {
-    width: 100%;
-    height: 100%;
-}
 
 
 
-.poster:hover {
-    rotate: x var(--rotation);
-  }
 
-.poster::after {
-    content: '';
-    position: absolute;
-    inset: 80% 0.5rem 0.5rem;
-    translate: 0;
-    transform: translateZ(-100px);
-    background-color: rgba(107, 0, 0, 0.527);
-    filter: blur(1rem);
-    z-index: 1;
-    transition: rotate var(--timing), translate var(--timing);
-}
 
-.poster::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    /* background-color: lime; */
-    z-index: 100;
-    background-image: radial-gradient(circle ,transparent 7rem, black);
-    opacity: 0;
-    transition: opacity var(--timing);
-}
-
-.poster:hover::before {
-    opacity: 1;
-}
-.poster:hover::after {
-    rotate: x calc(var(--rotation) * -1);
-    translate: 0 60px;
-}
-
-.bg-image {
-    position: absolute;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-  }
 
 
   #content main .movieinfos p {
@@ -210,7 +272,7 @@ body {
 }
 
 #content main h5 {
-    width: 40%;
+    width: 30rem;
 }
 
 #content main .genre h4 {
@@ -233,7 +295,7 @@ body {
 
 
 #page2 {
-    height: 100vh;
+    min-height: 100vh;
     width: calc(100% - 6rem);
     position: relative;
     top: calc(0+100vh);
@@ -248,6 +310,7 @@ body {
 
 #page2 .available {
     width: 100%;
+    min-height: 22rem;
 }
 
 #page2 .available h2 {
@@ -257,11 +320,8 @@ body {
 }
 
 #page2 .available div .movie {
-    height: 12rem;
-    width: 10rem;
-}
-
-#page2 .available div .movie img {
-    height: 100%;
-    width: 100%;
+    height: 18rem;
+    width: 12rem;
+    background-position: center;
+    background-size: cover;
 }
