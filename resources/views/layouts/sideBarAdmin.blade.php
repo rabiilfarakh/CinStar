@@ -39,8 +39,7 @@
                     </form>
                 @endforeach
             </div>
-            <form method="POST" action="{{ route('logout') }}" class="absolute bottom-14">
-                @csrf
+            <form method="GET" action="{{ route('logout') }}" class="absolute bottom-14">
                 <button type="submit"
                     class="block text-white py-2.5 px-4  rounded transition duration-200 hover:bg-red-700 hover:text-black">
                     <i class="fas fa-sign-out-alt mr-2"></i>Logout

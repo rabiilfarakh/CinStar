@@ -9,11 +9,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    @if (session()->has('success'))
-        <script>
-            alert("{{ session('success') }}");
-        </script>
-    @endif
+    @if (session('success'))
+    <div id="success-message"
+        class="bg-red-800  fixed right-20  top-50 z-50 text-white p-4 text-center animate-bounce mb-4">
+        {{ session('success') }}
+    </div>
+    <script>
+        setTimeout(function() {
+            document.getElementById('success-message').style.display = 'none';
+        }, 5000);
+    </script>
+@endif
 </head>
 
 <body class="bg-[#111111]">
@@ -55,7 +61,7 @@
                 <tbody>
                     @foreach ($films as $film)
                         <tr class="hover:bg-gray-200">
-                            <td class="py-2 px-4 border-b flex justify-center border-gray-700">
+                            <td class="py-2 px-4 border-b border-gray-700">
                                 <img src="{{ $film->Poster }}" alt="Film Image" class="rounded-[3px] h-20 w-20">
 
                             </td>
