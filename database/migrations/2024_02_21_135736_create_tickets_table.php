@@ -15,7 +15,6 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('film_id')->constrained('films')->onDelete('cascade');
-            $table->string('code');
             $table->enum('type', ['simple', 'vip'])->default('simple');
             $table->timestamps();
         });

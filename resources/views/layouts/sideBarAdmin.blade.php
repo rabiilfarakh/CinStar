@@ -7,7 +7,7 @@
                 <i class="fas fa-times  text-white"></i>
 
         </div>
-            <a class="block text-white py-2.5 px-4 mt-2 rounded transition duration-200 hover:bg-red-700 hover:text-black"
+            <a class="block text-white py-2.5 px-4 mt-10 rounded transition duration-200 hover:bg-red-700 hover:text-black"
                 href="/dashboard">
                 <i class="fas fa-door-closed mr-2"></i>Room Statistics
             </a>
