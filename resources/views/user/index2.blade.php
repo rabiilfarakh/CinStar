@@ -31,7 +31,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 <i class='bx bx-home active' ></i>
 <i class='bx bx-camera-movie' ></i>
 
-
+<i class='bx bx-bell'></i>
 
 <div>
         
@@ -62,6 +62,37 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 
   </div>
+</div>
+
+
+
+<div class="notification">
+
+
+    <div class="field2">
+      @if(count($notifications) < 0)
+
+      <h1>NO Notifications</h1>
+
+      @else
+
+
+      @foreach($notifications as $notification)
+
+      <div>
+        <p>{{$notification->message}}</p>
+        <p>{{$notification->created_at}}</p>
+      </div>
+    
+      @endforeach
+
+
+
+      @endif
+
+    </div>
+
+
 </div>
 
 
@@ -202,7 +233,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 <div class="available text-white flex flex-col gap-2">
 
-<h2>Movies</h2>
+<h2 id="mov">Movies</h2>
 
 
 <div class="flex flex-wrap gap-4">
@@ -296,6 +327,52 @@ document.querySelector('.form input').addEventListener('input', function() {
             document.querySelector('#sidebar .right .form').classList.add('active');
         },1000)
     }
+});
+
+
+
+
+document.querySelector('.bx-bell').addEventListener('click' , function() {
+  var notificationpage = document.querySelector('#sidebar .notification');
+
+
+  if (notificationpage.style.display === "flex" && notificationpage.style.width === "93vw") {
+    notificationpage.style.width = '0';
+      document.querySelector('#sidebar').style.zIndex = '0';
+  setTimeout(function() {
+     notificationpage.style.display = "none";
+  }, 700); 
+} 
+
+else {
+  document.querySelector('#sidebar').style.zIndex = '3000';
+  notificationpage.style.display = "flex";
+  notificationpage.classList.add('active');
+
+  setTimeout(function() {
+            notificationpage.style.width = '93vw';
+
+        }, 100); 
+
+
+}
+
+
+
+
+})
+
+
+
+
+
+
+
+
+
+
+document.querySelector('.bx-camera-movie').addEventListener('click', function() {
+  document.querySelector('.available #mov').scrollIntoView({ behavior: 'smooth' });
 });
 
 
