@@ -26,20 +26,20 @@
                         src="https://mediakwest.com/wp-content/uploads/2019/07/1_Beaugrenelle.ONYX-c-Fr%C3%A9d%C3%A9ric-Berthet.HD_.006.jpg">
                     <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
                         <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countSalleA}}</h3>
                                 <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
 
                         </div>
                         <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsSalleA}}</h3>
                                 <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
                         </div>
                         <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsWeekSalleA}}</h3>
                                 <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
                         </div>
                         <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsMounthSalleA}}</h3>
                                 <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
                         </div>
                     </div>
@@ -53,20 +53,20 @@
                         src="https://www.coze.fr/wp-content/uploads/2021/04/cinema-004.jpg">
                         <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
                             <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countSalleB}}</h3>
                                     <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
     
                             </div>
                             <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsSalleB}}</h3>
                                     <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
                             </div>
                             <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsWeekSalleB}}</h3>
                                     <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
                             </div>
                             <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsMounthSalleB}}</h3>
                                     <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
                             </div>
                         </div>
@@ -78,20 +78,20 @@
                             src="https://leclaireur.fnac.com/wp-content/uploads/2022/04/movietheater-1256x826.jpg">
                             <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
                                 <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countSalleC}}</h3>
                                         <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
         
                                 </div>
                                 <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsSalleC}}</h3>
                                         <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
                                 </div>
                                 <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsWeekSalleC}}</h3>
                                         <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
                                 </div>
                                 <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsMounthSalleC}}</h3>
                                         <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
                                 </div>
                             </div>
@@ -103,20 +103,20 @@
                                 src="https://fr.hespress.com/wp-content/uploads/2018/10/cinema-e1538647780224-900x516.jpg">
                                 <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
                                     <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countSalleD}}</h3>
                                             <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
             
                                     </div>
                                     <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsSalleD}}</h3>
                                             <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
                                     </div>
                                     <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsWeekSalleD}}</h3>
                                             <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
                                     </div>
                                     <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
-                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">{{$countReservationsMounthSalleD}}</h3>
                                             <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
                                     </div>
                                 </div>
