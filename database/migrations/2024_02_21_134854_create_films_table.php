@@ -28,6 +28,7 @@ return new class extends Migration
             $table->enum('statut', ['2','1','0'])->default('1');
             $table->enum('presentation_time', ['20h', '23h'])->nullable(); 
             $table->text('description')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
 
