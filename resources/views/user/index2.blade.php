@@ -199,7 +199,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 @foreach($films as $film)
 
 @if($film->statut == 2)
-<a href="{{ route('film.show' , ['id' => $film->id])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
+<a href="{{ route('film.show' , ['slug' => $film->slug])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
 
 @endif
 
@@ -218,8 +218,10 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 <div class="flex flex-wrap gap-4">
 
 @foreach($series as $serie)
+<a href="{{ route('film.show', ['slug' => $serie->slug]) }}">
+  <div class="movie" style="background-image:url('{{$serie->Poster}}')"></div>
+</a>
 
-<a href="{{ route('film.show' , ['id' => $serie->id])}}"><div class="movie" style="background-image:url('{{$serie->Poster}}')"></div></a>
 
 @endforeach
 
@@ -240,7 +242,10 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 
 @foreach($movies as $movie)
 
-  <a href="{{ route('film.show' , ['id' => $movie->id])}}"><div class="movie" style="background-image:url('{{$movie->Poster}}')"></div></a>
+<a href="{{ route('film.show', ['slug' => $movie->slug]) }}">
+  <div class="movie" style="background-image:url('{{$movie->Poster}}')"></div>
+</a>
+
 
 @endforeach
 
@@ -261,8 +266,9 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <script>
+var filmRoute = "{{ route('film.show', ['slug' => ':slug']) }}";
 
-var filmRoute = "{{ route('film.show', ['id' => ':id']) }}"
+
 
 document.querySelector('.form input').addEventListener('input', function() {
     let inputValue = this.value;

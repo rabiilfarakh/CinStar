@@ -14,13 +14,12 @@ use Illuminate\Support\Facades\Auth;
 
 class reservationController extends Controller
 {
-    public function showReservation($id){
-        $film = Film::findOrFail($id);
-
+    public function showReservation($slug){
+        $film = Film::where('slug', $slug)->firstOrFail();
         $tailleSalle = $film->salle->taille;
         $salleid = $film->salle_id;
         $salle = Salle::findOrFail($salleid);
-        $images = Image::where('film_id', $id)->get();
+        $images = Image::where('film_id', $film->id)->get();
         return view('user.reservation',compact('film','tailleSalle', 'images','salle'));
     }
 
