@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Film;
-use App\Models\Salle;
 use App\Models\Image;
-use Illuminate\Http\Request;
+use App\Models\Salle;
 use App\Models\chaises;
+use App\Models\reservation;
+use Illuminate\Http\Request;
+
 class AdminController extends Controller
 {
     public function insertSchema(Request $request){
@@ -39,11 +42,138 @@ class AdminController extends Controller
     }
 
     public function dashboard()
-    {
+{
+    $salles = Salle::all();
+    $today = Carbon::now()->format('Y-m-d');
 
-        $salles = Salle::all();
-        return view('admin.dashboard', ['salles' => $salles]);
-    }
+    $startOfWeek = Carbon::now()->startOfWeek()->format('Y-m-d'); 
+    $endOfWeek = Carbon::now()->endOfWeek()->format('Y-m-d'); 
+    $startOfMonth = Carbon::now()->startOfMonth()->format('Y-m-d');
+    $endOfMonth = Carbon::now()->endOfMonth()->format('Y-m-d'); 
+
+    // Count reservations and films for salle A
+    $countReservationsMounthSalleA = Reservation::whereDate('reservations.created_at', '>=', $startOfMonth)
+        ->whereDate('reservations.created_at', '<=', $endOfMonth)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle A')
+        ->count();
+
+    $countReservationsWeekSalleA = Reservation::whereDate('reservations.created_at', '>=', $startOfWeek)
+        ->whereDate('reservations.created_at', '<=', $endOfWeek)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle A')
+        ->count();
+
+    $countReservationsSalleA = Reservation::whereDate('reservations.created_at', $today)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle A')
+        ->count();
+
+    $countSalleA = Film::whereHas('salle', function ($query) {
+        $query->where('name', 'salle A');
+    })->count();
+
+    // Count reservations and films for salle B
+    $countReservationsMounthSalleB = Reservation::whereDate('reservations.created_at', '>=', $startOfMonth)
+        ->whereDate('reservations.created_at', '<=', $endOfMonth)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle B')
+        ->count();
+
+    $countReservationsWeekSalleB = Reservation::whereDate('reservations.created_at', '>=', $startOfWeek)
+        ->whereDate('reservations.created_at', '<=', $endOfWeek)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle B')
+        ->count();
+
+    $countReservationsSalleB = Reservation::whereDate('reservations.created_at', $today)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle B')
+        ->count();
+
+    $countSalleB = Film::whereHas('salle', function ($query) {
+        $query->where('name', 'salle B');
+    })->count();
+
+    // Count reservations and films for salle C
+    $countReservationsMounthSalleC = Reservation::whereDate('reservations.created_at', '>=', $startOfMonth)
+        ->whereDate('reservations.created_at', '<=', $endOfMonth)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle C')
+        ->count();
+
+    $countReservationsWeekSalleC = Reservation::whereDate('reservations.created_at', '>=', $startOfWeek)
+        ->whereDate('reservations.created_at', '<=', $endOfWeek)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle C')
+        ->count();
+
+    $countReservationsSalleC = Reservation::whereDate('reservations.created_at', $today)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle C')
+        ->count();
+
+    $countSalleC = Film::whereHas('salle', function ($query) {
+        $query->where('name', 'salle C');
+    })->count();
+
+    // Count reservations and films for salle D
+    $countReservationsMounthSalleD = Reservation::whereDate('reservations.created_at', '>=', $startOfMonth)
+        ->whereDate('reservations.created_at', '<=', $endOfMonth)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle D')
+        ->count();
+
+    $countReservationsWeekSalleD = Reservation::whereDate('reservations.created_at', '>=', $startOfWeek)
+        ->whereDate('reservations.created_at', '<=', $endOfWeek)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle D')
+        ->count();
+
+    $countReservationsSalleD = Reservation::whereDate('reservations.created_at', $today)
+        ->join('chaises', 'reservations.chaise_id', '=', 'chaises.id')
+        ->join('salles', 'chaises.salle_id', '=', 'salles.id')
+        ->where('salles.name', 'salle D')
+        ->count();
+
+    $countSalleD = Film::whereHas('salle', function ($query) {
+        $query->where('name', 'salle D');
+    })->count();
+
+    return view('admin.dashboard', [
+        'salles' => $salles,
+        'countSalleA' => $countSalleA,
+        'countSalleB' => $countSalleB,
+        'countReservationsSalleA' => $countReservationsSalleA,
+        'countReservationsWeekSalleA' => $countReservationsWeekSalleA,
+        'countReservationsMounthSalleA' => $countReservationsMounthSalleA,
+        'countReservationsSalleB' => $countReservationsSalleB,
+        'countReservationsWeekSalleB' => $countReservationsWeekSalleB,
+        'countReservationsMounthSalleB' => $countReservationsMounthSalleB,
+        'countReservationsSalleC' => $countReservationsSalleC,
+        'countReservationsWeekSalleC' => $countReservationsWeekSalleC,
+        'countReservationsMounthSalleC' => $countReservationsMounthSalleC,
+        'countReservationsSalleD' => $countReservationsSalleD,
+        'countReservationsWeekSalleD' => $countReservationsWeekSalleD,
+        'countReservationsMounthSalleD' => $countReservationsMounthSalleD,
+        'countSalleC' => $countSalleC,
+        'countSalleD' => $countSalleD,
+    ]);
+}
+
+
+
 
 
 
@@ -113,11 +243,13 @@ public function statistiqueFilms(Request $request)
     $films = Film::where('statut', '!=', 0)->get();
     $filmEdit = Film::where('id' ,$request->input('film_id'))->first();
 
+    
+
+    
     return view('admin.statistiqueFilms', [
         'films' => $films,
         'salles' => $salles,
         'filmEdit' => $filmEdit,
-
     ]);
 }
 
