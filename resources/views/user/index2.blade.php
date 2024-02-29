@@ -199,7 +199,7 @@ $randomIndex = rand(0, count($films[$random]->images) - 1)
 @foreach($films as $film)
 
 @if($film->statut == 2)
-<a href="{{ route('film.show' , ['title' => $film->slug])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
+<a href="{{ route('film.show' , ['slug' => $film->slug])}}"><div class="movie" style="background-image:url('{{$film->Poster}}')"></div></a>
 
 @endif
 

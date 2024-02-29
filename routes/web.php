@@ -28,7 +28,7 @@ Route::get('auth/google/call-back' , [GoogleAuthController::class, 'callbackGoog
 Route::middleware(['auth' , 'member'])->group(function () {
     Route::get('/' , [PagesController::class , 'index'])->name('member.index');
     Route::get('/index/film/{slug}', [filmController::class, 'showFilm'])->name('film.show');
-    Route::get('/index/film/{id}/reservation' , [reservationController::class , 'showReservation'])->name('film.reservation');
+    Route::get('/index/film/{slug}/reservation' , [reservationController::class , 'showReservation'])->name('film.reservation');
     Route::post('/index/film/{id}/reservation' , [reservationController::class , 'reservation'])->name('stystemeReservation');
     Route::get('/statistiqueFilms', [AdminController::class, 'statistiqueFilms'])->name('film.statistique');
 

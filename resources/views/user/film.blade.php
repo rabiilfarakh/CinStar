@@ -65,7 +65,8 @@ $genresArray = explode(',', $genres);
 
 
  @if($movie->statut == 2)
- <a href="{{ route('film.reservation' , ['id' => $movie->id])}}"><button class="buy">Buy A Ticket</button></a>
+ <a href="{{ route('film.reservation', ['slug' => $movie->slug]) }}"><button class="buy">Buy A Ticket</button></a>
+ 
  @else
 <button class="buy">Not available for Now</button>
  @endif

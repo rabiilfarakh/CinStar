@@ -61,15 +61,7 @@
 
     </style>
 </head>
-<body class="bg-black flex justify-between">
-
-    <div class="w-1/4 relative">
-        @foreach($images as $image)
-            <img src="{{ asset('img/' . $image->image . '.jpg') }}" class="full-height">
-            <div class="overlay"></div> 
-        @endforeach
-    </div>
-
+<body class="bg-black flex justify-center items-center">
     <div class="flex flex-col justify-center items-center w-3/4"> 
         <div class="text-white text-4xl mb-4">Sélectionnez vos places</div> 
         <div class="shadow-lg bg-white p-4 rounded-lg w-auto mt-5">
@@ -86,7 +78,7 @@
                         @if($chair->status == 'reserved')
                             <i class="fas fa-couch text-gray-500 text-opacity-50 cursor-default text-2xl"></i>
                         @else
-                            <i data-price="10" data-chair-id="{{ $chair->id }}" class="reservation-trigger fas fa-couch text-gray-500 hover:text-green-500 text-2xl cursor-pointer"></i>
+                            <i data-price="10" data-chair-id="{{$chair->id }}" class="reservation-trigger fas fa-couch text-gray-500 hover:text-green-500 text-2xl cursor-pointer"></i>
                         @endif
                     @else
                         <i class="fas transparent fa-couch text-white text-opacity-50 cursor-default text-2xl"></i>
