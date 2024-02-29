@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,61 +10,117 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<div class="flex flex-col h-screen bg-gray-100">
 
-    @include('layouts.sideBarAdmin')
+<body class="bg-[#111111]">
+    <div class="flex ">
+        <div class="w-[20%]">
+            @include('layouts.sideBarAdmin')
+        </div>
 
+        <section class="md:w-[80%]">
+            <div class="my-10 ">
 
+                <h1 class="text-gray-200 flex justify-center font-mono items-center  ml-20 text-2xl">SALLE A</h1>
+                <div class="flex justify-around">
+                    <img class="w-[40%] h-[45vh] rounded shadow-lg"
+                        src="https://mediakwest.com/wp-content/uploads/2019/07/1_Beaugrenelle.ONYX-c-Fr%C3%A9d%C3%A9ric-Berthet.HD_.006.jpg">
+                    <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
+                        <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
 
-        
-
-
-            <div class="mt-8 bg-white p-4 shadow rounded-lg">
-                <h2 class="text-gray-500 text-lg font-semibold pb-4">Autorizaciones Pendientes</h2>
-                <div class="my-1"></div>
-                <div class="bg-gradient-to-r from-cyan-300 to-cyan-500 h-px mb-6"></div> 
-                <table class="w-full table-auto text-sm">
-                    <thead>
-                        <tr class="text-sm leading-normal">
-                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Foto</th>
-                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Nombre</th>
-                            <th class="py-2 px-4 bg-grey-lightest font-bold uppercase text-sm text-grey-light border-b border-grey-light">Rol</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
-                            <td class="py-2 px-4 border-b border-grey-light">Juan Pérez</td>
-                            <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
-                        </tr>
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
-                            <td class="py-2 px-4 border-b border-grey-light">Maria Gómez</td>
-                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                        </tr>
-                        </tr>
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
-                            <td class="py-2 px-4 border-b border-grey-light">Carlos López</td>
-                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                        </tr>
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
-                            <td class="py-2 px-4 border-b border-grey-light">Laura Torres</td>
-                            <td class="py-2 px-4 border-b border-grey-light">Comercio</td>
-                        </tr>
-                        <tr class="hover:bg-grey-lighter">
-                            <td class="py-2 px-4 border-b border-grey-light"><img src="https://via.placeholder.com/40" alt="Foto Perfil" class="rounded-full h-10 w-10"></td>
-                            <td class="py-2 px-4 border-b border-grey-light">Ana Ramírez</td>
-                            <td class="py-2 px-4 border-b border-grey-light">Usuario</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="text-right mt-4">
-                    <button class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded">
-                        Ver más
-                    </button>
+                        </div>
+                        <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
+                        </div>
+                        <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
+                        </div>
+                        <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                            <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
+            <div class="my-10">
+                
+                    <h1 class="text-gray-200 flex justify-center font-mono ml-20 items-center text-2xl">SALLE B</h1>
+                <div class="flex justify-around">
+                    <img class="w-[40%] h-[45vh] rounded shadow-lg"
+                        src="https://www.coze.fr/wp-content/uploads/2021/04/cinema-004.jpg">
+                        <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
+                            <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
+    
+                            </div>
+                            <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
+                            </div>
+                            <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
+                            </div>
+                            <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                    <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="my-10">
+                    <h1 class="text-gray-200 flex justify-center font-mono ml-20 items-center text-2xl">SALLE C</h1>
+                    <div class="flex justify-around">
+                        <img class="w-[40%] h-[45vh] rounded shadow-lg"
+                            src="https://leclaireur.fnac.com/wp-content/uploads/2022/04/movietheater-1256x826.jpg">
+                            <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
+                                <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
+        
+                                </div>
+                                <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
+                                </div>
+                                <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
+                                </div>
+                                <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                    <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                        <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="my-10">
+                        <h1 class="text-gray-200 flex justify-center font-mono ml-20 items-center text-2xl">SALLE D</h1>
+                        <div class="flex justify-around">
+                            <img class="w-[40%] h-[45vh] rounded shadow-lg"
+                                src="https://fr.hespress.com/wp-content/uploads/2018/10/cinema-e1538647780224-900x516.jpg">
+                                <div class="grid md:grid-cols-2 grid-cols-1 mt-4 z-50 gap-x-8">
+                                    <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                            <p class="text-lg mt-2 pl-4 font-bold text-red-900">Total Films</p>
+            
+                                    </div>
+                                    <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                            <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservatins of Day</p>
+                                    </div>
+                                    <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                            <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservation of Week</p>
+                                    </div>
+                                    <div class="bg-black rounded shadow-2xl h-[100px] w-[150px] md:w-[250px] ">
+                                        <h3 class=" text-3xl font-extrabold pl-4 mt-2 text-red-800">5</h3>
+                                            <p class="text-lg mt-2 pl-4 font-bold text-red-900">Reservations of Mounth</p>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+        </section>
+    </div>

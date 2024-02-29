@@ -53,7 +53,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="type" class="block text-sm font-bold mb-2">Date:</label>
-                        <input type="text" id="type" name="date" required class="bg-gray-800 appearance-none rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="date" id="type" name="date" required class="bg-gray-800 appearance-none rounded w-full py-4 px-3 text-white leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <div class="mb-4">
                         <label for="salle_id" class="block text-sm font-bold mb-2">Salle Name:</label>
