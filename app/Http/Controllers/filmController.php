@@ -9,12 +9,11 @@ use App\Models\Image;
 
 class filmController extends Controller
 {
-    public function showFilm($id){
-        $film = Film::findOrFail($id); 
-        $movie = Film::with('images')->where('id' , $id)->first();
-        return view('user.film',compact('movie'));
+    public function showFilm($slug){
+        $film = Film::where('slug', $slug)->firstOrFail(); 
+        $movie = Film::with('images')->where('slug', $slug)->first();
+        return view('user.film', compact('movie'));
     }
-
     public function store(Request $request) {
 
         $film = new Film();
